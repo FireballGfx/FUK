@@ -13,8 +13,19 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+    held.cpp \
+    eigenschaft.cpp \
+    fertigkeit.cpp \
+    mainform.cpp \
+    fertigkeitform.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += \
+    held.h \
+    eigenschaft.h \
+    fertigkeit.h \
+    mainform.h \
+    fertigkeitform.h
 
-FORMS    += mainwindow.ui
+FORMS    += \
+    mainform.ui \
+    fertigkeitform.ui
