@@ -9,10 +9,12 @@ int main(int argc, char *argv[])
     MainForm main;
 
 
-    Charakter c;
+    Charakter *c = new Charakter;
 
 
     main.show();
+
+    delete c;
 
     return a.exec();
 }
