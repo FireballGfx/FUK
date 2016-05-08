@@ -5,6 +5,7 @@
 
 class Fertigkeit
 {
+
 public:
     Fertigkeit();
 };

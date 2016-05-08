@@ -13,18 +13,18 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    held.cpp \
     eigenschaft.cpp \
     fertigkeit.cpp \
     mainform.cpp \
-    fertigkeitform.cpp
+    fertigkeitform.cpp \
+    charakter.cpp
 
 HEADERS  += \
-    held.h \
     eigenschaft.h \
     fertigkeit.h \
     mainform.h \
-    fertigkeitform.h
+    fertigkeitform.h \
+    charakter.h
 
 FORMS    += \
     mainform.ui \
