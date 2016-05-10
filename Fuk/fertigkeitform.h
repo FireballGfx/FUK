@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::FertigkeitForm *ui;
+
+private slots:
+    void onPushButtonAbbrechenClicked();
 };
 
 #endif // FERTIGKEITFORM_H

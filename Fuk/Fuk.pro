@@ -17,14 +17,16 @@ SOURCES += main.cpp\
     fertigkeit.cpp \
     mainform.cpp \
     fertigkeitform.cpp \
-    charakter.cpp
+    charakter.cpp \
+    charaktermanager.cpp
 
 HEADERS  += \
     eigenschaft.h \
     fertigkeit.h \
     mainform.h \
     fertigkeitform.h \
-    charakter.h
+    charakter.h \
+    charaktermanager.h
 
 FORMS    += \
     mainform.ui \
