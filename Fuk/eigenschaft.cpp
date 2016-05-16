@@ -2,7 +2,7 @@
 #include "eigenschaftexception.h"
 
 Eigenschaft::Eigenschaft(){
-    wert = 1;
+    wert = 0;
 }
 
 Eigenschaft::Eigenschaft(Merkmal merkmal, int wert){

@@ -4,30 +4,24 @@
 #include "charakter.h"
 #include "eigenschaft.h"
 #include "eigenschaftexception.h"
+
+#include "fertigkeit.h"
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainForm main;
 
 
-    Eigenschaft *e = new Eigenschaft(KLUGHEIT,1);
+    Eigenschaft *klugheit = new Eigenschaft(KLUGHEIT,2);
 
-    (*e)++;
-    ++(*e);
-    ++(*e);
 
-    try{
-        ++(*e); // nicht ok
-    }catch(EigenschaftException& e){
-        const char* fehler = e.what();
-        int i=0;
-    }
-
+    Fertigkeit *f = new Fertigkeit(*klugheit,"Schach","Ist Deutscher Schachmeister.");
 
 
 
     main.show();
 
-    delete e;
+    delete f;
+    delete klugheit;
     return a.exec();
 }

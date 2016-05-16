@@ -27,7 +27,8 @@ HEADERS  += \
     fertigkeitform.h \
     charakter.h \
     charaktermanager.h \
-    eigenschaftexception.h
+    eigenschaftexception.h \
+    merkmal.h
 
 FORMS    += \
     mainform.ui \

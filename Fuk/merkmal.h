@@ -1,0 +1,15 @@
+#ifndef MERKMAN_H
+#define MERKMAN_H
+
+enum Merkmal{
+    KLUGHEIT,
+    WILLENSKRAFT,
+    WAHRNEHMUNG,
+    AUSSTRAHLUNG,
+    GESCHICKLICHKEIT,
+    BEWEGLICHKEIT,
+    STAERKE,
+    WIDERSTAND
+};
+
+#endif // MERKMAN_H

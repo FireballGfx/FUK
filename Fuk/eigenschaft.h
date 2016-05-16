@@ -1,16 +1,7 @@
 #ifndef EIGENSCHAFT_H
 #define EIGENSCHAFT_H
 
-enum Merkmal{
-    KLUGHEIT,
-    WILLENSKRAFT,
-    WAHRNEHMUNG,
-    AUSSTRAHLUNG,
-    GESCHICKLICHKEIT,
-    BEWEGLICHKEIT,
-    STAERKE,
-    WIDERSTAND
-};
+#include "merkmal.h"
 
 
 class Eigenschaft
@@ -20,7 +11,7 @@ private:
     int wert; // 1 - 4
 
 public:
-    Eigenschaft(Merkmal merkmal, int wert);
+    Eigenschaft(Merkmal merkmal, int wert); // das mit dem Wert noch einmal überdenken
     Eigenschaft();
     Eigenschaft(const Eigenschaft &eigenschaft);
 
