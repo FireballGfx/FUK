@@ -3,20 +3,29 @@
 
 #include <QLinkedList>
 #include <QString>
+#include <QVector>
 
-class Eigenschaft;
+#include "eigenschaft.h"
+#include "fertigkeit.h"
 
 class Charakter
 {
 
 private:
     QString name;
-    Eigenschaft* eigenschaften[8]; // Todo hier besser QVector benutzen.
+    QVector<Eigenschaft> eigenschaften;
+    QVector<Fertigkeit> fertigkeiten;
 
 public:
 
-    Charakter();
+    Charakter(QString name);
     ~Charakter();
+
+    // Gibt die Eigenschaft zum Merkmal zurück
+    Eigenschaft& getEigenschaft(Merkmal merkmal);
+
+    // Fügt dem Charakter eine neue Fertigkeit hinzu.
+    void fertigkeitHinzufuegen(Fertigkeit fertigkeit);
 };
 
 #endif // CHARAKTER_H

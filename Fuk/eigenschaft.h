@@ -13,7 +13,7 @@ private:
 public:
     Eigenschaft(Merkmal merkmal, int wert); // das mit dem Wert noch einmal überdenken
     Eigenschaft();
-    Eigenschaft(const Eigenschaft &eigenschaft);
+    Eigenschaft(const Eigenschaft& eigenschaft);
 
     // operatoren
     void operator++();

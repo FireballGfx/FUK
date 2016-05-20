@@ -6,7 +6,7 @@ CharakterManager::CharakterManager()
 
 }
 
-void CharakterManager::add(Charakter &charakter)
+void CharakterManager::insert(Charakter &charakter)
 {
     charaktere.insert(getNewKey(),charakter);
 }
@@ -18,6 +18,10 @@ void CharakterManager::update(Charakter &charakter)
 
 void CharakterManager::drop(Charakter &charakter)
 {
+
+}
+
+void CharakterManager::commit(){
 
 }
 

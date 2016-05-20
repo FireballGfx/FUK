@@ -10,9 +10,10 @@ class CharakterManager
 public:
     CharakterManager();
 
-    void add(Charakter& charakter);
+    void insert(Charakter& charakter);
     void update(Charakter& charakter);
     void drop(Charakter& charakter);
+    void commit();
 
     QHash<int,Charakter>* getCharaktere();
 
