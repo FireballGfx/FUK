@@ -5,6 +5,9 @@
 #include <QString>
 #include <QVector>
 
+#include <QLinkedList>
+#include <QMap>
+
 #include "eigenschaft.h"
 #include "fertigkeit.h"
 
@@ -13,7 +16,7 @@ class Charakter
 
 private:
     QString name;
-    QVector<Eigenschaft> eigenschaften;
+    QMap<Merkmal, Eigenschaft> eigenschaften;
     QVector<Fertigkeit> fertigkeiten;
 
 public:

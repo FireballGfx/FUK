@@ -4,7 +4,6 @@
 
 Charakter::Charakter(QString name){
 
-    eigenschaften.resize(8);
     fertigkeiten.resize(12);
 
     Eigenschaft klugheit(KLUGHEIT,1);
@@ -16,17 +15,21 @@ Charakter::Charakter(QString name){
     Eigenschaft staerke(STAERKE,1);
     Eigenschaft widerstand(WIDERSTAND,1);
 
-    eigenschaften[0] = klugheit;
-    eigenschaften[1] = willenskraft;
-    eigenschaften[2] = wahrnehmung;
-    eigenschaften[3] = ausstrahlung;
-    eigenschaften[4] = geschicklichkeit;
-    eigenschaften[5] = beweglichkeit;
-    eigenschaften[6] = staerke;
-    eigenschaften[7] = widerstand;
+    eigenschaften[KLUGHEIT] = klugheit;
+    eigenschaften[WILLENSKRAFT] = willenskraft;
+    eigenschaften[WAHRNEHMUNG] = wahrnehmung;
+    eigenschaften[AUSSTRAHLUNG] = ausstrahlung;
+    eigenschaften[GESCHICKLICHKEIT] = geschicklichkeit;
+    eigenschaften[BEWEGLICHKEIT] = beweglichkeit;
+    eigenschaften[STAERKE] = staerke;
+    eigenschaften[WIDERSTAND] = widerstand;
 
     this->name = name;
 }
 
 Charakter::~Charakter(){
+}
+
+Eigenschaft& Charakter::getEigenschaft(Merkmal merkmal){
+
 }
