@@ -21,3 +21,18 @@ void FertigkeitForm::onPushButtonAbbrechenClicked()
     // todo nachfragen
     this->close();
 }
+
+void FertigkeitForm::on_pushButtonAbbrechen_clicked()
+{
+
+}
+
+void FertigkeitForm::on_pushButtonZurueck_clicked()
+{
+
+}
+
+void FertigkeitForm::on_pushButtonNext_clicked()
+{
+
+}

@@ -13,10 +13,10 @@ public:
     void insert(Charakter& charakter);
     void update(Charakter& charakter);
     void drop(Charakter& charakter);
-    void commit();
+    void commit(); // muss noch
 
     QHash<int,Charakter>* getCharaktere();
-
+    Charakter& findCharakter(int key);
 private:
     QHash<int,Charakter> charaktere;
 

@@ -2,6 +2,7 @@
 #define MAINFORM_H
 
 #include <QWidget>
+#include <charaktermanager.h>
 
 class FertigkeitForm;
 
@@ -20,7 +21,11 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_treeView_clicked(const QModelIndex &index);
+
 private:
+    CharakterManager charakterManager;
+
     Ui::MainForm *ui;
 
     FertigkeitForm *fertigkeitForm;

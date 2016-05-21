@@ -20,6 +20,9 @@ private:
 
 private slots:
     void onPushButtonAbbrechenClicked();
+    void on_pushButtonAbbrechen_clicked();
+    void on_pushButtonZurueck_clicked();
+    void on_pushButtonNext_clicked();
 };
 
 #endif // FERTIGKEITFORM_H

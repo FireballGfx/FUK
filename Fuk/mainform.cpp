@@ -11,6 +11,9 @@ MainForm::MainForm(QWidget *parent) :
     fertigkeitForm = new FertigkeitForm();
     fertigkeitForm->setModal(true);
 
+
+    ui->treeView->
+
     connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(on_pushButton_clicked()));
 }
 
@@ -23,4 +26,9 @@ void MainForm::on_pushButton_clicked()
 {
 
     fertigkeitForm->show();
+}
+
+void MainForm::on_treeView_clicked(const QModelIndex &index)
+{
+
 }
