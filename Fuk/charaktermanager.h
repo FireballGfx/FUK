@@ -3,7 +3,7 @@
 
 #include <QHash>
 
-class Charakter;
+#include "charakter.h"
 
 class CharakterManager
 {
