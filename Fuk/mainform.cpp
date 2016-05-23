@@ -1,6 +1,7 @@
 #include "mainform.h"
 #include "ui_mainform.h"
-#include "fertigkeitform.h"
+#include "charakterform.h"
+
 
 MainForm::MainForm(QWidget *parent) :
     QWidget(parent),
@@ -8,27 +9,32 @@ MainForm::MainForm(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    fertigkeitForm = new FertigkeitForm();
-    fertigkeitForm->setModal(true);
+    charakterForm = new CharakterForm();
+    charakterForm->setModal(true);
 
+    QStringList items;
 
-    ui->treeView->
+    items << "Test";
 
-    connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(on_pushButton_clicked()));
+    ui->heldenListWidget->addItems(items);
+
+    connect(ui->hinzufuegenButton,SIGNAL(clicked()),this,SLOT(on_pushButton_clicked()));
 }
 
 MainForm::~MainForm()
 {
+
+    delete charakterForm;
     delete ui;
 }
 
 void MainForm::on_pushButton_clicked()
 {
 
-    fertigkeitForm->show();
+    charakterForm->show();
 }
 
-void MainForm::on_treeView_clicked(const QModelIndex &index)
+void MainForm::clickedOnHinzufuegen(const QModelIndex &index)
 {
 
 }

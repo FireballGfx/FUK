@@ -4,7 +4,8 @@
 #include <QWidget>
 #include <charaktermanager.h>
 
-class FertigkeitForm;
+
+class CharakterForm;
 
 namespace Ui {
 class MainForm;
@@ -21,14 +22,13 @@ public:
 private slots:
     void on_pushButton_clicked();
 
-    void on_treeView_clicked(const QModelIndex &index);
+    void clickedOnHinzufuegen(const QModelIndex &index);
 
 private:
     CharakterManager charakterManager;
 
     Ui::MainForm *ui;
-
-    FertigkeitForm *fertigkeitForm;
+    CharakterForm* charakterForm;
 };
 
 #endif // MAINFORM_H

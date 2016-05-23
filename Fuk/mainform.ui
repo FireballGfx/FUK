@@ -24,10 +24,10 @@
       </widget>
      </item>
      <item>
-      <widget class="QTreeView" name="treeView"/>
+      <widget class="QListWidget" name="heldenListWidget"/>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="hinzufuegenButton">
        <property name="text">
         <string>hinzufügen</string>
        </property>
@@ -38,7 +38,7 @@
    <item row="0" column="1">
     <layout class="QGridLayout" name="gridLayout">
      <item row="1" column="0">
-      <widget class="QListWidget" name="listWidget"/>
+      <widget class="QListWidget" name="listWidget2"/>
      </item>
      <item row="2" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout">

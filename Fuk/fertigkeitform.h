@@ -2,6 +2,8 @@
 #define FERTIGKEITFORM_H
 
 #include <QDialog>
+#include "charakter.h"
+#include "charaktermanager.h"
 
 namespace Ui {
 class FertigkeitForm;
@@ -17,6 +19,9 @@ public:
 
 private:
     Ui::FertigkeitForm *ui;
+    CharakterManager* charakterManager;
+
+
 
 private slots:
     void onPushButtonAbbrechenClicked();
