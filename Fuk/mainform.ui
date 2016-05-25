@@ -27,9 +27,9 @@
       <widget class="QListWidget" name="heldenListWidget"/>
      </item>
      <item>
-      <widget class="QPushButton" name="hinzufuegenButton">
+      <widget class="QPushButton" name="erstellenButton">
        <property name="text">
-        <string>hinzufügen</string>
+        <string>erstellen</string>
        </property>
       </widget>
      </item>

@@ -9,7 +9,7 @@ CharakterForm::CharakterForm(QDialog *parent) :
     ui->setupUi(this);
 
 
-    connect(ui->startButton,SIGNAL(clicked()),this,SLOT(startGenerierung()));
+    connect(ui->weiterButton,SIGNAL(clicked()),this,SLOT(startGenerierung()));
 
     fertigkeitForm = new FertigkeitForm();
     fertigkeitForm->setModal(true);
@@ -26,7 +26,8 @@ CharakterForm::~CharakterForm()
 
 void CharakterForm::startGenerierung(){
 
-    QString name = ui->lineEditField->text();
+    QString name = ui->lineEditName->text();
+    QString beschreibung = ui->labelBeschreibung->text();
 
     fertigkeitForm->show();
 }

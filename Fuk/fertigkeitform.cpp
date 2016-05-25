@@ -8,7 +8,7 @@ FertigkeitForm::FertigkeitForm(QDialog *parent) :
     ui(new Ui::FertigkeitForm)
 {
     ui->setupUi(this);
-    connect(ui->pushButtonAbbrechen,SIGNAL(clicked()),this,SLOT(onPushButtonAbbrechenClicked()));
+    connect(ui->abbrechenButton,SIGNAL(clicked()),this,SLOT(onPushButtonAbbrechenClicked()));
 }
 
 FertigkeitForm::~FertigkeitForm()

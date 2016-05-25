@@ -1,5 +1,6 @@
 #include "charaktermanager.h"
 #include "charakter.h"
+#include "charakterrepository.h"
 
 CharakterManager::CharakterManager(){
 
@@ -13,18 +14,23 @@ void CharakterManager::insert(Charakter &charakter){
     int key = getNewKey();
     charakter.setId(key);
     charaktere.insert(key,charakter);
+    charakterRepository.saveCharakter(&charakter);
 }
 
 void CharakterManager::update(Charakter &charakter){
-    charaktere.insert(charakter.getId(),charakter);
-}
-
-void CharakterManager::drop(Charakter &charakter){
     charaktere.remove(charakter.getId());
+    charaktere.insert(charakter.getId(),charakter);
+    charakterRepository.saveCharakter(&charakter);
 }
 
-void CharakterManager::commit(){
-    // speichern der Helden in eine Datei
+void CharakterManager::remove(Charakter &charakter){
+    charaktere.remove(charakter.getId());
+    charakterRepository.deleteCharakter(&charakter);
+}
+
+QHash<int,Charakter>* CharakterManager::read(){
+    charakterRepository.readAllCharakters(&charaktere);
+    return getCharaktere();
 }
 
 int CharakterManager::getNewKey(){

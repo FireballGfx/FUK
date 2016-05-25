@@ -18,7 +18,7 @@ MainForm::MainForm(QWidget *parent) :
 
     ui->heldenListWidget->addItems(items);
 
-    connect(ui->hinzufuegenButton,SIGNAL(clicked()),this,SLOT(on_pushButton_clicked()));
+    connect(ui->erstellenButton,SIGNAL(clicked()),this,SLOT(on_pushButton_clicked()));
 }
 
 MainForm::~MainForm()

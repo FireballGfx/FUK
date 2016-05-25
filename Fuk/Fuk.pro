@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     fertigkeitform.cpp \
     charakter.cpp \
     charaktermanager.cpp \
-    charakterform.cpp
+    charakterform.cpp \
+    charakterrepository.cpp
 
 HEADERS  += \
     eigenschaft.h \
@@ -30,7 +31,8 @@ HEADERS  += \
     charaktermanager.h \
     eigenschaftexception.h \
     merkmal.h \
-    charakterform.h
+    charakterform.h \
+    charakterrepository.h
 
 FORMS    += \
     mainform.ui \

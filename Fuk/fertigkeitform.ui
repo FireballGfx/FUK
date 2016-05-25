@@ -111,23 +111,23 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButtonAbbrechen">
+      <widget class="QPushButton" name="abbrechenButton">
        <property name="text">
         <string>abbrechen</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButtonZurueck">
+      <widget class="QPushButton" name="zurueckButton">
        <property name="text">
         <string>zurück</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButtonNext">
+      <widget class="QPushButton" name="weiterButton">
        <property name="text">
-        <string>nächster</string>
+        <string>weiter</string>
        </property>
       </widget>
      </item>
