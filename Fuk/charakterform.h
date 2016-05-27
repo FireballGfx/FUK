@@ -5,6 +5,7 @@
 
 
 class FertigkeitForm;
+class CharakterManager;
 
 namespace Ui {
 class charakterform;
@@ -15,7 +16,7 @@ class CharakterForm : public QDialog
     Q_OBJECT
 
 public:
-    explicit CharakterForm(QDialog *parent = 0);
+    explicit CharakterForm(QDialog *parent = 0,CharakterManager* charakterManager = 0);
     ~CharakterForm();
 
 
@@ -26,6 +27,7 @@ private:
     Ui::charakterform *ui;
 
     FertigkeitForm* fertigkeitForm;
+    CharakterManager* charakterManager;
 };
 
 #endif // CHARAKTERFORM_H

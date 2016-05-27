@@ -10,6 +10,13 @@ Charakter& CharakterManager::findCharakter(int key){
     return charaktere.find(key).value();
 }
 
+void CharakterManager::addCharakterBeschreibung(QString name, QString beschreibung)
+{
+    if(currentCharakter == NULL){
+        currentCharakter = new Charakter(name, beschreibung);
+    }
+}
+
 void CharakterManager::insert(Charakter &charakter){
     int key = getNewKey();
     charakter.setId(key);

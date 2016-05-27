@@ -17,6 +17,7 @@ class Charakter
 private:
     int id;
     QString name;
+    QString beschreibung;
     QMap<Merkmal, Eigenschaft> eigenschaften;
     QVector<Fertigkeit> fertigkeiten;
 
@@ -24,7 +25,7 @@ private:
 
 public:
 
-    Charakter(QString name);
+    Charakter(QString name, QString beschreibung);
     ~Charakter();
 
     QVector<Fertigkeit>* getFertigkeiten();

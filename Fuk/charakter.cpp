@@ -3,7 +3,7 @@
 #include "eigenschaftexception.h"
 #include <QDebug>
 
-Charakter::Charakter(QString name){
+Charakter::Charakter(QString name, QString beschreibung){
 
     fertigkeiten.resize(12);
 
@@ -26,6 +26,7 @@ Charakter::Charakter(QString name){
     eigenschaften[WIDERSTAND] = widerstand;
 
     this->name = name;
+    this->beschreibung = beschreibung;
 }
 
 Charakter::~Charakter(){

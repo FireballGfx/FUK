@@ -20,15 +20,18 @@ public:
     ~MainForm();
 
 private slots:
-    void on_pushButton_clicked();
+    void erstellenButtonClicked();
 
     void clickedOnHinzufuegen(const QModelIndex &index);
 
 private:
-    CharakterManager charakterManager;
-
+    CharakterManager* charakterManager;
     Ui::MainForm *ui;
     CharakterForm* charakterForm;
+
+
+private:
+    void loadCharakters();
 };
 
 #endif // MAINFORM_H

@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 
     CharakterManager manager;
 
-    Charakter c("marcel");
+    Charakter c("marcel","Das bin ich.");
 
     Fertigkeit f(STAERKE,"Heben","Gewichtheber");
 
