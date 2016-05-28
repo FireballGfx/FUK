@@ -22,6 +22,7 @@ public:
 
 private slots:
     void startGenerierung();
+    void abbrechenGenerierung();
 
 private:
     Ui::charakterform *ui;

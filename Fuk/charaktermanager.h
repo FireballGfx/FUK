@@ -10,6 +10,7 @@ class CharakterManager
 {
 public:
     CharakterManager();
+    ~CharakterManager();
 
     // fügt einen Charakter dem Manager hinzu und
     // speichert ihn direkt über das Repository.
@@ -34,6 +35,9 @@ public:
     // fügt dem Chrakter im Generierungs Flow den Namen und
     // eine Beschreibung hinzu
     void addCharakterBeschreibung(QString name, QString beschreibung);
+
+    // löscht den derzeit im Speicher gehaltenen Charakter
+    void deleteCurrentCharakter();
 
 private:
     QHash<int,Charakter> charaktere;

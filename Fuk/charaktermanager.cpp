@@ -3,7 +3,14 @@
 #include "charakterrepository.h"
 
 CharakterManager::CharakterManager(){
+    currentCharakter = NULL;
+}
 
+CharakterManager::~CharakterManager(){
+
+    if(currentCharakter){
+        delete currentCharakter;
+    }
 }
 
 Charakter& CharakterManager::findCharakter(int key){
@@ -46,4 +53,12 @@ int CharakterManager::getNewKey(){
 
 QHash<int, Charakter> *CharakterManager::getCharaktere(){
     return &charaktere;
+}
+
+void CharakterManager::deleteCurrentCharakter(){
+    if(currentCharakter != NULL){
+        int i = currentCharakter->getId();
+        delete currentCharakter;
+    }
+    currentCharakter = NULL;
 }
