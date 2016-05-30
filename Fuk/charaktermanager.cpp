@@ -57,7 +57,6 @@ QHash<int, Charakter> *CharakterManager::getCharaktere(){
 
 void CharakterManager::deleteCurrentCharakter(){
     if(currentCharakter != NULL){
-        int i = currentCharakter->getId();
         delete currentCharakter;
     }
     currentCharakter = NULL;

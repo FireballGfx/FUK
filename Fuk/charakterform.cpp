@@ -1,3 +1,4 @@
+#include <QMessageBox>
 #include "charakterform.h"
 #include "fertigkeitform.h"
 #include "ui_charakterform.h"
@@ -23,8 +24,14 @@ CharakterForm::~CharakterForm(){
 void CharakterForm::startGenerierung(){
     QString name = ui->lineEditName->text();
     QString beschreibung = ui->labelBeschreibung->text();
-    charakterManager->addCharakterBeschreibung(name,beschreibung);
-    fertigkeitForm->show();
+
+    if(name == NULL || name.trimmed().size() == 0){
+        QMessageBox::warning(this,tr("Pflichtfeld nicht gesetzt."),tr("Bitte geben sie einen Namen für ihren Chrakter an."),QMessageBox::Ok);
+    }else{
+        charakterManager->addCharakterBeschreibung(name,beschreibung);
+        this->close();
+        fertigkeitForm->show();
+    }
 }
 
 void CharakterForm::abbrechenGenerierung(){
