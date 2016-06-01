@@ -2,6 +2,7 @@
 #include "charakterform.h"
 #include "fertigkeitform.h"
 #include "ui_charakterform.h"
+#include "ui_fertigkeitform.h"
 
 
 CharakterForm::CharakterForm(QDialog *parent, std::shared_ptr<CharakterManager> charakterManager) :
@@ -9,11 +10,15 @@ CharakterForm::CharakterForm(QDialog *parent, std::shared_ptr<CharakterManager> 
     ui(new Ui::charakterform){
     ui->setupUi(this);
 
+    fertigkeitForm = Ptr<FertigkeitForm>(new FertigkeitForm(this,charakterManager));
+    fertigkeitForm->setModal(true);
+
     connect(ui->weiterButton,SIGNAL(clicked()),this,SLOT(startGenerierung()));
     connect(ui->abbrechenButton,SIGNAL(clicked()),this,SLOT(abbrechenGenerierung()));
 
-    fertigkeitForm = Ptr<FertigkeitForm>(new FertigkeitForm(this,charakterManager));
-    fertigkeitForm->setModal(true);
+    connect(fertigkeitForm->ui->abbrechenButton,SIGNAL(clicked()),this,SLOT(abbrechenGenerierung()));
+
+
 }
 
 CharakterForm::~CharakterForm(){
@@ -24,7 +29,7 @@ CharakterForm::~CharakterForm(){
 
 void CharakterForm::startGenerierung(){
     QString name = ui->lineEditName->text();
-    QString beschreibung = ui->labelBeschreibung->text();
+    QString beschreibung = ui->textEditBeschreibung->toPlainText();
 
     if(name == NULL || name.trimmed().size() == 0){
         QMessageBox::warning(this,tr("Pflichtfeld nicht gesetzt."),tr("Bitte geben sie einen Namen für ihren Chrakter an."),QMessageBox::Ok);
@@ -37,7 +42,7 @@ void CharakterForm::startGenerierung(){
 
 void CharakterForm::abbrechenGenerierung(){
 
-    // Alle Fälder wieder löschen
+    // Alle Felder wieder löschen
     foreach(QLineEdit *widget, this->findChildren<QLineEdit*>()) {
         widget->clear();
     }
@@ -46,7 +51,5 @@ void CharakterForm::abbrechenGenerierung(){
         widget->clear();
     }
 
-    // Im Speicher könnte noch ein Charakter sein, den wir löschen.
-    charakterManager->deleteCurrentCharakter();
     this->close();
 }

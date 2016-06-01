@@ -68,3 +68,11 @@ void Charakter::setId(int id){
 int Charakter::getId(){
     return id;
 }
+
+QString Charakter::getBeschreibung(){
+    return beschreibung;
+}
+
+QString Charakter::getName(){
+    return name;
+}

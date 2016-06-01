@@ -10,13 +10,19 @@ namespace Ui {
 class FertigkeitForm;
 }
 
+class CharakterForm;
+
 class FertigkeitForm : public QDialog
 {
     Q_OBJECT
 
+   friend class CharakterForm;
+
 public:
     explicit FertigkeitForm(QDialog *parent = 0, Ptr<CharakterManager> charakterManager = 0);
     ~FertigkeitForm();
+
+
 
 private:
     Ui::FertigkeitForm *ui;
@@ -25,8 +31,7 @@ private:
 
 private slots:
     void onPushButtonAbbrechenClicked();
-    void on_pushButtonAbbrechen_clicked();
-    void on_pushButtonZurueck_clicked();
+    void zurueckSchritt();
     void naechsterSchritt();
 };
 

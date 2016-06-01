@@ -23,6 +23,7 @@ public:
     ~CharakterForm();
 
 
+
 private slots:
     void startGenerierung();
     void abbrechenGenerierung();

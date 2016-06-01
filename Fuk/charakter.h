@@ -30,6 +30,9 @@ public:
     Eigenschaft& getEigenschaft(Merkmal merkmal);
     void setId(int id);
     int getId();
+
+    QString getName();
+    QString getBeschreibung();
 };
 
 #endif // CHARAKTER_H

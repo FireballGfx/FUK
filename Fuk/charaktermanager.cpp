@@ -3,25 +3,17 @@
 #include "charakterrepository.h"
 
 CharakterManager::CharakterManager(){
-    currentCharakter = NULL;
 }
 
 CharakterManager::~CharakterManager(){
-
-    if(currentCharakter){
-        delete currentCharakter;
-    }
 }
 
 Charakter& CharakterManager::findCharakter(int key){
     return charaktere.find(key).value();
 }
 
-void CharakterManager::addCharakterBeschreibung(QString name, QString beschreibung)
-{
-    if(currentCharakter == NULL){
-        currentCharakter = new Charakter(name, beschreibung);
-    }
+void CharakterManager::addCharakterBeschreibung(QString name, QString beschreibung){
+    currentCharakter = Ptr<Charakter>(new Charakter(name, beschreibung));
 }
 
 void CharakterManager::insert(Charakter &charakter){
@@ -55,9 +47,6 @@ QHash<int, Charakter> *CharakterManager::getCharaktere(){
     return &charaktere;
 }
 
-void CharakterManager::deleteCurrentCharakter(){
-    if(currentCharakter != NULL){
-        delete currentCharakter;
-    }
-    currentCharakter = NULL;
+WeakPtr<Charakter> CharakterManager::getCurrentCharakter(){
+    return currentCharakter;
 }

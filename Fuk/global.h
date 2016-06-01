@@ -11,5 +11,6 @@
 
 template<class T> using Ptr = std::shared_ptr<T>;
 
+template<class T> using WeakPtr = std::weak_ptr<T>;
 
 #endif // GLOBAL_H
