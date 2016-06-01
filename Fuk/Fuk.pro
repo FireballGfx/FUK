@@ -32,7 +32,8 @@ HEADERS  += \
     eigenschaftexception.h \
     merkmal.h \
     charakterform.h \
-    charakterrepository.h
+    charakterrepository.h \
+    global.h
 
 FORMS    += \
     mainform.ui \

@@ -1,3 +1,4 @@
+#include <iostream>
 #include "mainform.h"
 #include "ui_mainform.h"
 #include "charakterform.h"
@@ -11,8 +12,10 @@ MainForm::MainForm(QWidget *parent) :
     ui->setupUi(this);
 
     // init
-    charakterManager = new CharakterManager();
-    charakterForm = new CharakterForm(0,charakterManager);
+
+    charakterManager= Ptr<CharakterManager>(new CharakterManager());
+    charakterForm = Ptr<CharakterForm>(new CharakterForm(0,charakterManager));
+
     charakterForm->setModal(true);
     loadCharakters();
 
@@ -27,8 +30,8 @@ MainForm::MainForm(QWidget *parent) :
 
 MainForm::~MainForm()
 {
-    delete charakterManager;
-    delete charakterForm;
+    //delete charakterManager;
+    //delete charakterForm;
     delete ui;
 }
 

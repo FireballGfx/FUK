@@ -3,7 +3,7 @@
 #include "ui_fertigkeitform.h"
 
 
-FertigkeitForm::FertigkeitForm(QDialog *parent, CharakterManager* charakterManager) :
+FertigkeitForm::FertigkeitForm(QDialog *parent, Ptr<CharakterManager> charakterManager) :
     QDialog(parent),charakterManager(charakterManager),step(1),
     ui(new Ui::FertigkeitForm)
 {
@@ -25,7 +25,7 @@ void FertigkeitForm::onPushButtonAbbrechenClicked()
 
 void FertigkeitForm::on_pushButtonAbbrechen_clicked()
 {
-
+    // todo alles löschen
 }
 
 void FertigkeitForm::on_pushButtonZurueck_clicked()

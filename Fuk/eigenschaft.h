@@ -11,17 +11,15 @@ private:
     int wert; // 1 - 4
 
 public:
-    Eigenschaft(Merkmal merkmal, int wert); // das mit dem Wert noch einmal überdenken
+    Eigenschaft(Merkmal merkmal, int wert);
     Eigenschaft();
     Eigenschaft(const Eigenschaft& eigenschaft);
 
-    // operatoren
     void operator++();
     void operator++(int);
     void operator--();
     void operator--(int);
 
-    // function
     Merkmal& getMerkmal();
     int& getWert();
 

@@ -3,7 +3,8 @@
 #include "fertigkeitform.h"
 #include "ui_charakterform.h"
 
-CharakterForm::CharakterForm(QDialog *parent, CharakterManager* charakterManager) :
+
+CharakterForm::CharakterForm(QDialog *parent, std::shared_ptr<CharakterManager> charakterManager) :
     QDialog(parent),charakterManager(charakterManager),
     ui(new Ui::charakterform){
     ui->setupUi(this);
@@ -11,12 +12,12 @@ CharakterForm::CharakterForm(QDialog *parent, CharakterManager* charakterManager
     connect(ui->weiterButton,SIGNAL(clicked()),this,SLOT(startGenerierung()));
     connect(ui->abbrechenButton,SIGNAL(clicked()),this,SLOT(abbrechenGenerierung()));
 
-    fertigkeitForm = new FertigkeitForm(this,charakterManager);
+    fertigkeitForm = Ptr<FertigkeitForm>(new FertigkeitForm(this,charakterManager));
     fertigkeitForm->setModal(true);
 }
 
 CharakterForm::~CharakterForm(){
-    delete fertigkeitForm;
+   // delete fertigkeitForm;
     delete ui;
 }
 

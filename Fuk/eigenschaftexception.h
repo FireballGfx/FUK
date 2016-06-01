@@ -13,7 +13,6 @@ public:
     EigenschaftException(const char* message):message(message){
     }
 
-    // ruft die Exception ab
     virtual const char* what() const throw(){
         return message;
     }

@@ -12,31 +12,13 @@ public:
     CharakterManager();
     ~CharakterManager();
 
-    // fügt einen Charakter dem Manager hinzu und
-    // speichert ihn direkt über das Repository.
     void insert(Charakter& charakter);
-    // aktualisiert einen Charakter im Manager und
-    // speichert die Änderung direkt über das Repository.
     void update(Charakter& charakter);
-
-    // löscht einen Charakter im Manager und
-    // Repository
     void remove(Charakter& charakter);
-
-    // liest alle bisher gespeicherten Chraktäre.
     QHash<int,Charakter>* read();
-
-    // gibt alle Charaktere in einer Hash zurück
     QHash<int,Charakter>* getCharaktere();
-
-    // sucht einen Charakter anhand eines Schlüssels
     Charakter& findCharakter(int key);
-
-    // fügt dem Chrakter im Generierungs Flow den Namen und
-    // eine Beschreibung hinzu
     void addCharakterBeschreibung(QString name, QString beschreibung);
-
-    // löscht den derzeit im Speicher gehaltenen Charakter
     void deleteCurrentCharakter();
 
 private:

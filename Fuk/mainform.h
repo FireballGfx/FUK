@@ -1,8 +1,11 @@
 #ifndef MAINFORM_H
 #define MAINFORM_H
 
+#include <memory>
 #include <QWidget>
 #include <charaktermanager.h>
+
+#include "global.h"
 
 
 class CharakterForm;
@@ -13,6 +16,7 @@ class MainForm;
 
 class MainForm : public QWidget
 {
+
     Q_OBJECT
 
 public:
@@ -25,9 +29,11 @@ private slots:
     void clickedOnHinzufuegen(const QModelIndex &index);
 
 private:
-    CharakterManager* charakterManager;
+
+    Ptr<CharakterForm> charakterForm;
+    Ptr<CharakterManager> charakterManager;
     Ui::MainForm *ui;
-    CharakterForm* charakterForm;
+
 
 
 private:

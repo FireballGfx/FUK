@@ -19,12 +19,11 @@ public:
 
     QString getName() const;
     QString getSatz() const;
-    //Eigenschaft& getEigenschaft() const;
     Merkmal getMerkmal();
 
     void setName(const QString name);
     void setSatz(const QString satz);
-    //void setEigenschaft(const Eigenschaft& eigenschaft);
+
     void setMerkmal(const Merkmal merkmal);
 
 };
