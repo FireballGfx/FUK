@@ -29,6 +29,9 @@ private:
     Ptr<CharakterManager> charakterManager;
     int step;
 
+signals:
+    void beenden();
+
 private slots:
     void onPushButtonAbbrechenClicked();
     void zurueckSchritt();

@@ -29,7 +29,7 @@
      <item>
       <widget class="QPushButton" name="erstellenButton">
        <property name="text">
-        <string>erstellen</string>
+        <string>Charakter erstellen</string>
        </property>
       </widget>
      </item>

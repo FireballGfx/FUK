@@ -101,6 +101,13 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
+      <widget class="QPushButton" name="abbrechenButton">
+       <property name="text">
+        <string>abbrechen</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -114,23 +121,16 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="abbrechenButton">
-       <property name="text">
-        <string>abbrechen</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="zurueckButton">
        <property name="text">
-        <string>zurück</string>
+        <string>&lt; zurück</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="weiterButton">
        <property name="text">
-        <string>weiter</string>
+        <string>weiter &gt;</string>
        </property>
       </widget>
      </item>

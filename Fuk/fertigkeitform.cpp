@@ -36,14 +36,26 @@ void FertigkeitForm::onPushButtonAbbrechenClicked()
 
     // todo nachfragen
     this->close();
+
+    emit beenden();
 }
 
 
 
 void FertigkeitForm::zurueckSchritt()
 {
-
     step--;
+
+    if(step != 12){
+        ui->weiterButton->setText("weiter >");
+    }
+
+    // todo auslagern in eine andere Methode
+    if(step == 1){
+        ui->zurueckButton->setEnabled(false);
+    }else if(!ui->zurueckButton->isEnabled()){
+        ui->zurueckButton->setEnabled(true);
+    }
     ui->progressBar->setValue(step);
     emit ui->progressBar->valueChanged(step);
 }
@@ -52,6 +64,10 @@ void FertigkeitForm::naechsterSchritt()
 {
     step++;
 
+    if(step == 13){
+        this->close();
+        emit beenden();
+    }
 
     // todo auslagern in eine andere Methode
     if(step == 1){
@@ -60,13 +76,12 @@ void FertigkeitForm::naechsterSchritt()
         ui->zurueckButton->setEnabled(true);
     }
 
-
     // todo auslagern in signal und slot
     if(step == 12){
         ui->weiterButton->setText("abschließen");
     }else{
         if(ui->weiterButton->text() == "abschließen"){
-            ui->weiterButton->setText("weiter");
+            ui->weiterButton->setText("weiter >");
         }
     }
 

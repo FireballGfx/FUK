@@ -11,6 +11,11 @@ private:
     Merkmal merkmal;
     QString name;
     QString satz; // Begründender Satz zu der Fertigkeit
+
+
+
+
+
 public:
     //Fertigkeit(Eigenschaft &eigenschaft, QString name, QString satz);
     Fertigkeit(Merkmal merkmal, QString name, QString satz);

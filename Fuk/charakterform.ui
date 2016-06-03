@@ -71,7 +71,7 @@
      <item>
       <widget class="QPushButton" name="weiterButton">
        <property name="text">
-        <string>weiter</string>
+        <string>weiter &gt;</string>
        </property>
       </widget>
      </item>
