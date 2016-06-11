@@ -33,6 +33,7 @@ void CharakterForm::startGenerierung(){
     QString name = ui->lineEditName->text();
     QString beschreibung = ui->textEditBeschreibung->toPlainText();
 
+
     if(name == NULL || name.trimmed().size() == 0){
         QMessageBox::warning(this,tr("Pflichtfeld nicht gesetzt."),tr("Bitte geben sie einen Namen für ihren Chrakter an."),QMessageBox::Ok);
     }else{

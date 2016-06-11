@@ -5,7 +5,7 @@
 
 
 FertigkeitForm::FertigkeitForm(QDialog *parent, Ptr<CharakterManager> charakterManager) :
-    QDialog(parent),charakterManager(charakterManager),step(1),
+    QDialog(parent),charakterManager(charakterManager),step(0),
     ui(new Ui::FertigkeitForm)
 {
 
@@ -44,6 +44,10 @@ void FertigkeitForm::onPushButtonAbbrechenClicked()
 
 void FertigkeitForm::zurueckSchritt()
 {
+
+    auto charakter = charakterManager->getCurrentCharakter().lock();
+    QVector<Fertigkeit>* fertigkeiten = charakter->getFertigkeiten();
+
     step--;
 
     if(step != 12){
@@ -57,20 +61,32 @@ void FertigkeitForm::zurueckSchritt()
         ui->zurueckButton->setEnabled(true);
     }
     ui->progressBar->setValue(step);
+
+
+
+    QString satz = fertigkeiten[step].data()->getSatz();
+    QString name = fertigkeiten[step].data()->getName();
+
+    ui->lineBeschreibung->setText(satz);
+    ui->lineName->setText(name);
+
+
     emit ui->progressBar->valueChanged(step);
+
+
+
 }
 
 void FertigkeitForm::naechsterSchritt()
 {
-    step++;
 
-    if(step == 13){
+    if(step == 12){
         this->close();
         emit beenden();
     }
 
     // todo auslagern in eine andere Methode
-    if(step == 1){
+    if(step == 0){
         ui->zurueckButton->setEnabled(false);
     }else if(!ui->zurueckButton->isEnabled()){
         ui->zurueckButton->setEnabled(true);
@@ -91,10 +107,21 @@ void FertigkeitForm::naechsterSchritt()
 
     auto charakter = charakterManager->getCurrentCharakter().lock();
 
-    QString beschreibung = charakter->getBeschreibung();
-
     QVector<Fertigkeit>* fertigkeiten = charakter->getFertigkeiten();
 
+    QString lineName = ui->lineName->text();
+    QString lineBeschreibung = ui->lineBeschreibung->text();
+
+    Fertigkeit fertigkeit;
+    fertigkeit.setName(lineName);
+    fertigkeit.setSatz(lineBeschreibung);
+
+    fertigkeiten->insert(step,fertigkeit);
+
+    step++;
+
+    ui->lineBeschreibung->setText("");
+    ui->lineName->setText("");
 
     emit ui->progressBar->valueChanged(step);
 }

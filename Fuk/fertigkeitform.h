@@ -22,8 +22,6 @@ public:
     explicit FertigkeitForm(QDialog *parent = 0, Ptr<CharakterManager> charakterManager = 0);
     ~FertigkeitForm();
 
-
-
 private:
     Ui::FertigkeitForm *ui;
     Ptr<CharakterManager> charakterManager;
