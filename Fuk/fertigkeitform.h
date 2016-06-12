@@ -26,6 +26,12 @@ private:
     Ui::FertigkeitForm *ui;
     Ptr<CharakterManager> charakterManager;
     int step;
+    int index;
+
+    static const int MAX_STEP = 13;
+    static const int MAX_INDEX = 12;
+    static const int MIN_STEP = 1;
+    static const int MIN_INDEX = 0;
 
 signals:
     void beenden();
