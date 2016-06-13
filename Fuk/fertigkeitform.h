@@ -28,8 +28,8 @@ private:
     int step;
     int index;
 
-    static const int MAX_STEP = 13;
-    static const int MAX_INDEX = 12;
+    static const int MAX_STEP = 12;
+    static const int MAX_INDEX = 11;
     static const int MIN_STEP = 1;
     static const int MIN_INDEX = 0;
 
@@ -40,6 +40,12 @@ private slots:
     void onPushButtonAbbrechenClicked();
     void zurueckSchritt();
     void naechsterSchritt();
+
+
+private:
+    void handleButtons();
+    void reset();
+
 };
 
 #endif // FERTIGKEITFORM_H

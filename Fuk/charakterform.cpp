@@ -39,6 +39,7 @@ void CharakterForm::startGenerierung(){
     }else{
         charakterManager->addCharakterBeschreibung(name,beschreibung);
         this->close();
+        fertigkeitForm->reset();
         fertigkeitForm->show();
     }
 }

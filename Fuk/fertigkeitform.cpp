@@ -2,6 +2,7 @@
 #include "merkmal.h"
 #include "charakter.h"
 #include "ui_fertigkeitform.h"
+#include <QMessageBox>
 
 
 FertigkeitForm::FertigkeitForm(QDialog *parent, Ptr<CharakterManager> charakterManager) :
@@ -11,6 +12,8 @@ FertigkeitForm::FertigkeitForm(QDialog *parent, Ptr<CharakterManager> charakterM
 
     ui->setupUi(this);
     ui->zurueckButton->setEnabled(false);
+
+    reset();
 
     for(int i = KLUGHEIT; i != SIZE_OF_ENUM; i++){
         Merkmal merkmal = static_cast<Merkmal>(i);
@@ -45,29 +48,16 @@ void FertigkeitForm::onPushButtonAbbrechenClicked()
 
 void FertigkeitForm::zurueckSchritt()
 {
+    // todo validation
 
-    if(index != MIN_INDEX){
-        index--;
-    }
+    index--;
+    step--;
 
-    if(step != MIN_STEP){
-        step--;
-    }
-
+    handleButtons();
 
     auto charakter = charakterManager->getCurrentCharakter().lock();
     QVector<Fertigkeit>* fertigkeiten = charakter->getFertigkeiten();
 
-    if(step != MAX_STEP){
-        ui->weiterButton->setText("weiter >");
-    }
-
-    // todo auslagern in eine andere Methode
-    if(step == MIN_STEP){
-        ui->zurueckButton->setEnabled(false);
-    }else if(!ui->zurueckButton->isEnabled()){
-        ui->zurueckButton->setEnabled(true);
-    }
     ui->progressBar->setValue(step);
 
     QString satz = fertigkeiten[index].data()->getSatz();
@@ -83,31 +73,30 @@ void FertigkeitForm::zurueckSchritt()
 
 }
 
-void FertigkeitForm::naechsterSchritt()
-{
+void FertigkeitForm::naechsterSchritt(){
+
+    // todo validation
 
 
     if(step == MAX_STEP){
-        this->close();
-        emit beenden();
-    }
 
-    // todo auslagern in eine andere Methode
-    if(step == MIN_STEP){
-        ui->zurueckButton->setEnabled(false);
-    }else if(!ui->zurueckButton->isEnabled()){
-        ui->zurueckButton->setEnabled(true);
-    }
+        int result = QMessageBox::question(this,tr("Sicher?"),tr("Sind sie sich sicher, dass sie die Generierung abschließen wollen?"),QMessageBox::Cancel | QMessageBox::Ok);
 
-    // todo auslagern in signal und slot
-    if(step == MAX_STEP - 1){
-        ui->weiterButton->setText("abschließen");
-    }else{
-        if(ui->weiterButton->text() == "abschließen"){
-            ui->weiterButton->setText("weiter >");
+        if(result == QMessageBox::Ok){
+
+            // todo store charakter
+            this->close();
+            emit beenden();
+        }else{
+            return;
         }
+
     }
 
+    ++step;
+    ++index; // Fehler
+
+    handleButtons();
 
     auto charakter = charakterManager->getCurrentCharakter().lock();
 
@@ -121,15 +110,41 @@ void FertigkeitForm::naechsterSchritt()
     fertigkeit.setName(lineName);
     fertigkeit.setSatz(lineBeschreibung);
     fertigkeit.setMerkmal(merkmal);
+
     fertigkeiten->insert(index,fertigkeit);
 
-
-    ++step;
-    ++index;
     ui->progressBar->setValue(step);
-
     ui->lineBeschreibung->setText("");
     ui->lineName->setText("");
 
+    emit ui->progressBar->valueChanged(step);
+}
+
+
+void FertigkeitForm::handleButtons(){
+    if(step == MIN_STEP){
+        ui->zurueckButton->setEnabled(false);
+    }
+    if(step == MIN_STEP + 1){
+        ui->zurueckButton->setEnabled(true);
+    }
+
+    if(step == MAX_STEP){
+        ui->weiterButton->setText("abschließen");
+    }else{
+        if(ui->weiterButton->text() == "abschließen"){
+            ui->weiterButton->setText("weiter >");
+        }
+    }
+
+    if(step != MAX_STEP){
+        ui->weiterButton->setText("weiter >");
+    }
+}
+
+void FertigkeitForm::reset(){
+    step = MIN_STEP;
+    index = MIN_INDEX;
+    ui->progressBar->setValue(step);
     emit ui->progressBar->valueChanged(step);
 }
