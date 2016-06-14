@@ -20,12 +20,14 @@ MainForm::MainForm(QWidget *parent) :
     loadCharakters();
 
 
-    QStringList items;
-    items << "Test";
-    ui->heldenListWidget->addItems(items);
+   // QStringList items;
+   // items << "Test";
+   // ui->heldenListWidget->addItems(items);
 
     // connectors
     connect(ui->erstellenButton,SIGNAL(clicked()),this,SLOT(erstellenButtonClicked()));
+    connect(charakterForm.get(),SIGNAL(beenden()),this,SLOT(aktualisieren()));
+
 }
 
 MainForm::~MainForm()
@@ -45,6 +47,14 @@ void MainForm::clickedOnHinzufuegen(const QModelIndex &index)
 
 }
 
+void MainForm::aktualisieren(){
+    QHash<int, Charakter>* charaktaere = charakterManager->getCharaktere();
+
+    foreach(Charakter charakter, *charaktaere) {
+
+        ui->heldenListWidget->addItem(charakter.getName());
+    }
+}
 
 void MainForm::loadCharakters(){
 

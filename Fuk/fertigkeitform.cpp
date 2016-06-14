@@ -60,11 +60,23 @@ void FertigkeitForm::zurueckSchritt()
 
     ui->progressBar->setValue(step);
 
-    QString satz = fertigkeiten[index].data()->getSatz();
-    QString name = fertigkeiten[index].data()->getName();
+    QString satz = "";
+    QString name = "";
+
+    Fertigkeit fertigkeit;
+
+
+    fertigkeit = fertigkeiten->value(index);
+
+
+
+    satz = fertigkeit.getSatz();
+    name = fertigkeit.getName();
+
 
     ui->lineBeschreibung->setText(satz);
     ui->lineName->setText(name);
+    ui->comboEigenschaft->setCurrentIndex(fertigkeit.getMerkmal());
 
 
     emit ui->progressBar->valueChanged(step);
@@ -75,8 +87,16 @@ void FertigkeitForm::zurueckSchritt()
 
 void FertigkeitForm::naechsterSchritt(){
 
-    // todo validation
+    // Auslesen der GUI
+    QString lineName = ui->lineName->text();
+    QString lineBeschreibung = ui->lineBeschreibung->text();
+    Merkmal merkmal = static_cast<Merkmal>(ui->comboEigenschaft->currentIndex());
 
+    auto charakter = charakterManager->getCurrentCharakter().lock();
+    QVector<Fertigkeit>* fertigkeiten = charakter->getFertigkeiten();
+    Fertigkeit fertigkeit = fertigkeiten->value(index);
+
+    // todo validation
 
     if(step == MAX_STEP){
 
@@ -90,32 +110,26 @@ void FertigkeitForm::naechsterSchritt(){
         }else{
             return;
         }
-
     }
 
-    ++step;
-    ++index; // Fehler
-
-    handleButtons();
-
-    auto charakter = charakterManager->getCurrentCharakter().lock();
-
-    QVector<Fertigkeit>* fertigkeiten = charakter->getFertigkeiten();
-
-    QString lineName = ui->lineName->text();
-    QString lineBeschreibung = ui->lineBeschreibung->text();
-    Merkmal merkmal = static_cast<Merkmal>(ui->comboEigenschaft->currentIndex());
-
-    Fertigkeit fertigkeit;
     fertigkeit.setName(lineName);
     fertigkeit.setSatz(lineBeschreibung);
     fertigkeit.setMerkmal(merkmal);
 
     fertigkeiten->insert(index,fertigkeit);
 
+    ++step;
+    ++index; // Fehler
+
     ui->progressBar->setValue(step);
-    ui->lineBeschreibung->setText("");
-    ui->lineName->setText("");
+
+    fertigkeit = fertigkeiten->value(index);
+
+    ui->lineName->setText(fertigkeit.getName());
+    ui->lineBeschreibung->setText(fertigkeit.getSatz());
+    ui->comboEigenschaft->setCurrentIndex(fertigkeit.getMerkmal());
+
+    handleButtons();
 
     emit ui->progressBar->valueChanged(step);
 }

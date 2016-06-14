@@ -17,7 +17,7 @@ CharakterForm::CharakterForm(QDialog *parent, std::shared_ptr<CharakterManager> 
     connect(ui->abbrechenButton,SIGNAL(clicked()),this,SLOT(abbrechenGenerierung()));
 
     connect(fertigkeitForm->ui->abbrechenButton,SIGNAL(clicked()),this,SLOT(abbrechenGenerierung()));
-    connect(fertigkeitForm.get(),SIGNAL(beenden()),this,SLOT(abbrechenGenerierung()));
+    connect(fertigkeitForm.get(),SIGNAL(beenden()),this,SLOT(abschliessenGenerierung()));
 
 
 
@@ -42,6 +42,12 @@ void CharakterForm::startGenerierung(){
         fertigkeitForm->reset();
         fertigkeitForm->show();
     }
+}
+
+void CharakterForm::abschliessenGenerierung(){
+
+    charakterManager->insert(*(charakterManager->getCurrentCharakter().lock().get()));
+    emit beenden();
 }
 
 void CharakterForm::abbrechenGenerierung(){

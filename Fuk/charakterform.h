@@ -23,10 +23,13 @@ public:
     ~CharakterForm();
 
 
+signals:
+    void beenden();
 
 private slots:
     void startGenerierung();
     void abbrechenGenerierung();
+    void abschliessenGenerierung();
 
 private:
     Ui::charakterform *ui;

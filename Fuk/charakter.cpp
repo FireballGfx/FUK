@@ -5,7 +5,7 @@
 
 Charakter::Charakter(QString name, QString beschreibung){
 
-    fertigkeiten.resize(11);
+   // fertigkeiten.resize(11);
 
     Eigenschaft klugheit(KLUGHEIT,1);
     Eigenschaft willenskraft(WILLENSKRAFT,1);

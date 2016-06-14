@@ -24,6 +24,7 @@ public:
     ~MainForm();
 
 private slots:
+    void aktualisieren();
     void erstellenButtonClicked();
 
     void clickedOnHinzufuegen(const QModelIndex &index);
