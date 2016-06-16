@@ -5,16 +5,14 @@
 
 Charakter::Charakter(QString name, QString beschreibung){
 
-   // fertigkeiten.resize(11);
-
-    Eigenschaft klugheit(KLUGHEIT,1);
-    Eigenschaft willenskraft(WILLENSKRAFT,1);
-    Eigenschaft wahrnehmung(WAHRNEHMUNG,1);
-    Eigenschaft ausstrahlung(AUSSTRAHLUNG,1);
-    Eigenschaft geschicklichkeit(GESCHICKLICHKEIT,1);
-    Eigenschaft beweglichkeit(BEWEGLICHKEIT,1);
-    Eigenschaft staerke(STAERKE,1);
-    Eigenschaft widerstand(WIDERSTAND,1);
+    Eigenschaft klugheit(KLUGHEIT,0);
+    Eigenschaft willenskraft(WILLENSKRAFT,0);
+    Eigenschaft wahrnehmung(WAHRNEHMUNG,0);
+    Eigenschaft ausstrahlung(AUSSTRAHLUNG,0);
+    Eigenschaft geschicklichkeit(GESCHICKLICHKEIT,0);
+    Eigenschaft beweglichkeit(BEWEGLICHKEIT,0);
+    Eigenschaft staerke(STAERKE,0);
+    Eigenschaft widerstand(WIDERSTAND,0);
 
     eigenschaften[KLUGHEIT] = klugheit;
     eigenschaften[WILLENSKRAFT] = willenskraft;
@@ -44,6 +42,8 @@ void Charakter::fertigkeitHinzufuegen(Fertigkeit fertigkeit){
         Eigenschaft* e =  &(*it);
         e->operator ++(); // löst eine Exception aus, wenn der Wert von 4 überschritten wird.
         fertigkeiten.append(fertigkeit);
+
+        // das geht so nicht! Die Fertigkeiten sind nun doppelt drin
     }
 }
 
@@ -55,6 +55,10 @@ bool Charakter::checkHinzufuegen(Fertigkeit f){
     }else{
         return true;
     }
+}
+
+QString Charakter::validate(){
+
 }
 
 QVector<Fertigkeit>* Charakter::getFertigkeiten(){

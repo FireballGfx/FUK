@@ -3,6 +3,7 @@
 #include "charakterrepository.h"
 
 CharakterManager::CharakterManager(){
+    loadCharakterFromFile();
 }
 
 CharakterManager::~CharakterManager(){
@@ -41,6 +42,16 @@ QHash<int,Charakter>* CharakterManager::read(){
 
 int CharakterManager::getNewKey(){
     return charaktere.size();
+}
+
+void CharakterManager::loadCharakterFromFile()
+{
+
+}
+
+void CharakterManager::saveCharakterToFile()
+{
+
 }
 
 QHash<int, Charakter> *CharakterManager::getCharaktere(){

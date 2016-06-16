@@ -8,7 +8,7 @@ class Eigenschaft
 {
 private:
     Merkmal merkmal;
-    int wert; // 1 - 4
+    int wert;
 
 public:
     Eigenschaft(Merkmal merkmal, int wert);

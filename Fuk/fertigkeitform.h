@@ -34,7 +34,8 @@ private:
     static const int MIN_INDEX = 0;
 
 signals:
-    void beenden();
+    void abbrechen();
+    void abschliessen();
 
 private slots:
     void onPushButtonAbbrechenClicked();

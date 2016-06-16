@@ -36,6 +36,9 @@ private:
 
     Ptr<FertigkeitForm> fertigkeitForm;
     Ptr<CharakterManager> charakterManager;
+
+private:
+    void resetForm();
 };
 
 #endif // CHARAKTERFORM_H

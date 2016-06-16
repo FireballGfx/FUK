@@ -32,16 +32,13 @@ FertigkeitForm::~FertigkeitForm()
 
 void FertigkeitForm::onPushButtonAbbrechenClicked()
 {
-    index = 0;
-    step = 1;
-    ui->progressBar->setValue(step);
-    ui->lineBeschreibung->clear();
-    ui->lineName->clear();
+    int result = QMessageBox::question(this,tr("Sicher?"),tr("Sind sie sich sicher, dass sie die Generierung abbrechen wollen?"),QMessageBox::Cancel | QMessageBox::Ok);
 
-    // todo nachfragen
-    this->close();
-
-    emit beenden();
+    if(result == QMessageBox::Ok){
+        reset();
+        this->close();
+        emit abbrechen();
+    }
 }
 
 
@@ -80,9 +77,6 @@ void FertigkeitForm::zurueckSchritt()
 
 
     emit ui->progressBar->valueChanged(step);
-
-
-
 }
 
 void FertigkeitForm::naechsterSchritt(){
@@ -94,9 +88,6 @@ void FertigkeitForm::naechsterSchritt(){
 
     auto charakter = charakterManager->getCurrentCharakter().lock();
     QVector<Fertigkeit>* fertigkeiten = charakter->getFertigkeiten();
-    Fertigkeit fertigkeit = fertigkeiten->value(index);
-
-    // todo validation
 
     if(step == MAX_STEP){
 
@@ -104,19 +95,28 @@ void FertigkeitForm::naechsterSchritt(){
 
         if(result == QMessageBox::Ok){
 
-            // todo store charakter
+            reset();
             this->close();
-            emit beenden();
+
+            emit abschliessen();
         }else{
             return;
         }
     }
 
+    Fertigkeit fertigkeit = fertigkeiten->value(index);
     fertigkeit.setName(lineName);
     fertigkeit.setSatz(lineBeschreibung);
     fertigkeit.setMerkmal(merkmal);
 
-    fertigkeiten->insert(index,fertigkeit);
+    if(!charakter->checkHinzufuegen(fertigkeit)){
+        QMessageBox::warning(this,tr("Nein nein das kann ich nicht zulassen!"),tr("Sie haben bereits 4 Fertigkeiten mit der selben Eigenschaft zugewiesen."),QMessageBox::Ok);
+        return;
+    }
+
+    //fertigkeiten->insert(index,fertigkeit);
+    charakter->fertigkeitHinzufuegen(fertigkeit);
+
 
     ++step;
     ++index; // Fehler
@@ -159,6 +159,10 @@ void FertigkeitForm::handleButtons(){
 void FertigkeitForm::reset(){
     step = MIN_STEP;
     index = MIN_INDEX;
+
+    ui->lineBeschreibung->clear();
+    ui->lineName->clear();
     ui->progressBar->setValue(step);
+    handleButtons();
     emit ui->progressBar->valueChanged(step);
 }

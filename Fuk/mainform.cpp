@@ -48,6 +48,8 @@ void MainForm::clickedOnHinzufuegen(const QModelIndex &index)
 }
 
 void MainForm::aktualisieren(){
+    ui->heldenListWidget->clear();
+
     QHash<int, Charakter>* charaktaere = charakterManager->getCharaktere();
 
     foreach(Charakter charakter, *charaktaere) {

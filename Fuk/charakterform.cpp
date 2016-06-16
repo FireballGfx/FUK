@@ -4,7 +4,6 @@
 #include "ui_charakterform.h"
 #include "ui_fertigkeitform.h"
 
-
 CharakterForm::CharakterForm(QDialog *parent, std::shared_ptr<CharakterManager> charakterManager) :
     QDialog(parent),charakterManager(charakterManager),
     ui(new Ui::charakterform){
@@ -15,16 +14,12 @@ CharakterForm::CharakterForm(QDialog *parent, std::shared_ptr<CharakterManager> 
 
     connect(ui->weiterButton,SIGNAL(clicked()),this,SLOT(startGenerierung()));
     connect(ui->abbrechenButton,SIGNAL(clicked()),this,SLOT(abbrechenGenerierung()));
-
     connect(fertigkeitForm->ui->abbrechenButton,SIGNAL(clicked()),this,SLOT(abbrechenGenerierung()));
-    connect(fertigkeitForm.get(),SIGNAL(beenden()),this,SLOT(abschliessenGenerierung()));
-
-
-
+    connect(fertigkeitForm.get(),SIGNAL(abschliessen()),this,SLOT(abschliessenGenerierung()));
+    connect(fertigkeitForm.get(),SIGNAL(abbrechen()),this,SLOT(abbrechenGenerierung()));
 }
 
 CharakterForm::~CharakterForm(){
-   // delete fertigkeitForm;
     delete ui;
 }
 
@@ -32,7 +27,6 @@ CharakterForm::~CharakterForm(){
 void CharakterForm::startGenerierung(){
     QString name = ui->lineEditName->text();
     QString beschreibung = ui->textEditBeschreibung->toPlainText();
-
 
     if(name == NULL || name.trimmed().size() == 0){
         QMessageBox::warning(this,tr("Pflichtfeld nicht gesetzt."),tr("Bitte geben sie einen Namen für ihren Chrakter an."),QMessageBox::Ok);
@@ -45,14 +39,13 @@ void CharakterForm::startGenerierung(){
 }
 
 void CharakterForm::abschliessenGenerierung(){
-
     charakterManager->insert(*(charakterManager->getCurrentCharakter().lock().get()));
+    charakterManager->saveCharakterToFile();
+    resetForm();
     emit beenden();
 }
 
 void CharakterForm::abbrechenGenerierung(){
-
-    // Alle Felder wieder löschen
     foreach(QLineEdit *widget, this->findChildren<QLineEdit*>()) {
         widget->clear();
     }
@@ -60,6 +53,10 @@ void CharakterForm::abbrechenGenerierung(){
     foreach(QTextEdit *widget, this->findChildren<QTextEdit*>()) {
         widget->clear();
     }
-
     this->close();
+}
+
+void CharakterForm::resetForm(){
+    ui->lineEditName->clear();
+    ui->textEditBeschreibung->clear();
 }

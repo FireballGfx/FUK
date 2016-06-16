@@ -33,6 +33,8 @@ public:
 
     QString getName();
     QString getBeschreibung();
+
+    QString validate();
 };
 
 #endif // CHARAKTER_H

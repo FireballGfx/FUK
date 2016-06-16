@@ -6,7 +6,7 @@ Eigenschaft::Eigenschaft(){
 }
 
 Eigenschaft::Eigenschaft(Merkmal merkmal, int wert){
-    if(wert < 1 || wert >4){
+    if(wert < 0 || wert >4){
         throw EigenschaftException("Ungueltiger Wertebereich.");
     }
     this->merkmal = merkmal;

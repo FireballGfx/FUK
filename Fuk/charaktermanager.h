@@ -21,7 +21,10 @@ public:
     QHash<int,Charakter>* getCharaktere();
     Charakter& findCharakter(int key);
     void addCharakterBeschreibung(QString name, QString beschreibung);
+    void saveCharakterToFile();
     WeakPtr<Charakter> getCurrentCharakter();
+
+
 
 private:
     QHash<int,Charakter> charaktere;
@@ -32,6 +35,9 @@ private:
 
 private:
     int getNewKey();
+
+    void loadCharakterFromFile();
+
 };
 
 #endif // CHARAKTERMANAGER_H
