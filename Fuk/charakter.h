@@ -25,7 +25,7 @@ public:
     ~Charakter();
 
     QVector<Fertigkeit>* getFertigkeiten();
-    void fertigkeitHinzufuegen(Fertigkeit fertigkeit);
+    void fertigkeitHinzufuegen(int index, Fertigkeit fertigkeit);
     bool checkHinzufuegen(Fertigkeit f);
     Eigenschaft& getEigenschaft(Merkmal merkmal);
     void setId(int id);

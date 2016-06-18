@@ -42,11 +42,80 @@ void FertigkeitForm::onPushButtonAbbrechenClicked()
 }
 
 
+bool FertigkeitForm::validateForm(){
+
+    QString lineName = ui->lineName->text();
+    QString lineBeschreibung = ui->lineBeschreibung->text();
+
+    if(lineName.isEmpty() || lineBeschreibung.isEmpty()){
+        QMessageBox::warning(this,tr("Nein nein das kann ich nicht zulassen!"),tr("Bitte füllen sie alle freien Felder aus!"),QMessageBox::Ok);
+
+        return false;
+    }
+
+    return true;
+}
+
+void FertigkeitForm::naechsterSchritt(){
+    auto charakter = charakterManager->getCurrentCharakter().lock();
+    QVector<Fertigkeit>* fertigkeiten = charakter->getFertigkeiten();
+    Fertigkeit fertigkeit = fertigkeiten->value(index);
+    int comboBoxIndex = static_cast<int>(ui->comboEigenschaft->currentIndex());
+    Merkmal merkmal = static_cast<Merkmal>(comboBoxIndex);
+
+
+    // nichts hinzufügen, wenn nichts in den Feldern steht.
+    if(validateForm()){
+        fertigkeit.setName(ui->lineName->text());
+        fertigkeit.setSatz(ui->lineBeschreibung->text());
+        fertigkeit.setMerkmal(merkmal);
+
+
+        if(!charakter->checkHinzufuegen(fertigkeit)){
+            QMessageBox::warning(this,tr("Nein nein das kann ich nicht zulassen!"),tr("Sie haben bereits 4 Fertigkeiten mit der selben Eigenschaft zugewiesen."),QMessageBox::Ok);
+            return;
+        }
+
+        charakter->fertigkeitHinzufuegen(index,fertigkeit);
+
+        if(step == MAX_STEP){
+            int result = QMessageBox::question(this,tr("Sicher?"),tr("Sind sie sich sicher, dass sie die Generierung abschließen wollen?"),QMessageBox::Cancel | QMessageBox::Ok);
+
+            if(result == QMessageBox::Ok){
+                reset();
+                this->close();
+                emit abschliessen();
+            }else{
+                return;
+            }
+        }
+
+        // den nächsten Schritt vorbereiten
+        ++step;
+        ++index;
+
+        ui->progressBar->setValue(step);
+
+        fertigkeit = fertigkeiten->value(index);
+
+        ui->lineName->setText(fertigkeit.getName());
+        ui->lineBeschreibung->setText(fertigkeit.getSatz());
+        ui->comboEigenschaft->setCurrentIndex(static_cast<int>(merkmal));
+
+        // Schaltefläche einstellen
+        handleButtons();
+
+        emit ui->progressBar->valueChanged(step);
+
+
+
+
+    }
+}
+
 
 void FertigkeitForm::zurueckSchritt()
 {
-    // todo validation
-
     index--;
     step--;
 
@@ -73,66 +142,12 @@ void FertigkeitForm::zurueckSchritt()
 
     ui->lineBeschreibung->setText(satz);
     ui->lineName->setText(name);
-    ui->comboEigenschaft->setCurrentIndex(fertigkeit.getMerkmal());
+    ui->comboEigenschaft->setCurrentIndex(static_cast<int>(fertigkeit.getMerkmal()));
 
 
     emit ui->progressBar->valueChanged(step);
 }
 
-void FertigkeitForm::naechsterSchritt(){
-
-    // Auslesen der GUI
-    QString lineName = ui->lineName->text();
-    QString lineBeschreibung = ui->lineBeschreibung->text();
-    Merkmal merkmal = static_cast<Merkmal>(ui->comboEigenschaft->currentIndex());
-
-    auto charakter = charakterManager->getCurrentCharakter().lock();
-    QVector<Fertigkeit>* fertigkeiten = charakter->getFertigkeiten();
-
-    if(step == MAX_STEP){
-
-        int result = QMessageBox::question(this,tr("Sicher?"),tr("Sind sie sich sicher, dass sie die Generierung abschließen wollen?"),QMessageBox::Cancel | QMessageBox::Ok);
-
-        if(result == QMessageBox::Ok){
-
-            reset();
-            this->close();
-
-            emit abschliessen();
-        }else{
-            return;
-        }
-    }
-
-    Fertigkeit fertigkeit = fertigkeiten->value(index);
-    fertigkeit.setName(lineName);
-    fertigkeit.setSatz(lineBeschreibung);
-    fertigkeit.setMerkmal(merkmal);
-
-    if(!charakter->checkHinzufuegen(fertigkeit)){
-        QMessageBox::warning(this,tr("Nein nein das kann ich nicht zulassen!"),tr("Sie haben bereits 4 Fertigkeiten mit der selben Eigenschaft zugewiesen."),QMessageBox::Ok);
-        return;
-    }
-
-    //fertigkeiten->insert(index,fertigkeit);
-    charakter->fertigkeitHinzufuegen(fertigkeit);
-
-
-    ++step;
-    ++index; // Fehler
-
-    ui->progressBar->setValue(step);
-
-    fertigkeit = fertigkeiten->value(index);
-
-    ui->lineName->setText(fertigkeit.getName());
-    ui->lineBeschreibung->setText(fertigkeit.getSatz());
-    ui->comboEigenschaft->setCurrentIndex(fertigkeit.getMerkmal());
-
-    handleButtons();
-
-    emit ui->progressBar->valueChanged(step);
-}
 
 
 void FertigkeitForm::handleButtons(){
@@ -163,6 +178,7 @@ void FertigkeitForm::reset(){
     ui->lineBeschreibung->clear();
     ui->lineName->clear();
     ui->progressBar->setValue(step);
+    ui->comboEigenschaft->setCurrentIndex(0);
     handleButtons();
     emit ui->progressBar->valueChanged(step);
 }

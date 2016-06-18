@@ -47,6 +47,8 @@ private:
     void handleButtons();
     void reset();
 
+    bool validateForm();
+
 };
 
 #endif // FERTIGKEITFORM_H

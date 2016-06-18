@@ -35,15 +35,13 @@ Eigenschaft& Charakter::getEigenschaft(Merkmal merkmal){
 }
 
 
-void Charakter::fertigkeitHinzufuegen(Fertigkeit fertigkeit){
+void Charakter::fertigkeitHinzufuegen(int index, Fertigkeit fertigkeit){
     QMap<Merkmal, Eigenschaft>::iterator it = eigenschaften.find(fertigkeit.getMerkmal());
 
     if(it != eigenschaften.end()){
         Eigenschaft* e =  &(*it);
         e->operator ++(); // löst eine Exception aus, wenn der Wert von 4 überschritten wird.
-        fertigkeiten.append(fertigkeit);
-
-        // das geht so nicht! Die Fertigkeiten sind nun doppelt drin
+        fertigkeiten.insert(index,fertigkeit);
     }
 }
 
