@@ -40,23 +40,36 @@ void Charakter::fertigkeitHinzufuegen(int index, Fertigkeit fertigkeit){
 
     if(it != eigenschaften.end()){
         Eigenschaft* e =  &(*it);
-        e->operator ++(); // löst eine Exception aus, wenn der Wert von 4 überschritten wird.
+
+        Fertigkeit tmp = fertigkeiten.value(index); // wurde diese Position schon einmal gesetzt?
+        if(tmp.getName().size() > 0){
+            fertigkeiten.erase(fertigkeiten.begin() + index);
+            Merkmal merkmal = tmp.getMerkmal();
+            QMap<Merkmal, Eigenschaft>::iterator it2 = eigenschaften.find(merkmal);
+            Eigenschaft* tmpEigenschaft =  &(*it2);
+            tmpEigenschaft->operator --();
+        }
+
+        e->operator ++();
+
         fertigkeiten.insert(index,fertigkeit);
     }
 }
 
-bool Charakter::checkHinzufuegen(Fertigkeit f){
+bool Charakter::checkHinzufuegen(int index, Fertigkeit f){
     Eigenschaft eigenschaft = getEigenschaft(f.getMerkmal());
+
+    Fertigkeit tmp = fertigkeiten.value(index);
+
+    if(tmp.getMerkmal() == eigenschaft.getMerkmal()){
+        return true;
+    }
 
     if(eigenschaft.getWert() == 4){
         return false;
     }else{
         return true;
     }
-}
-
-QString Charakter::validate(){
-
 }
 
 QVector<Fertigkeit>* Charakter::getFertigkeiten(){

@@ -1,15 +1,7 @@
 #include "fertigkeit.h"
 
-/*Fertigkeit::Fertigkeit(Eigenschaft& eigenschaft, QString name, QString satz)
-    :eigenschaft(eigenschaft),name(name),satz(satz){
-
-    eigenschaft++;
-}*/
-
 Fertigkeit::Fertigkeit(Merkmal merkmal, QString name, QString satz)
     :merkmal(merkmal),name(name),satz(satz){
-
-    //eigenschaft++;
 }
 
 Fertigkeit::Fertigkeit(const Fertigkeit& fertigkeit)
@@ -23,14 +15,6 @@ QString Fertigkeit::getName() const{
 QString Fertigkeit::getSatz() const{
     return satz;
 }
-
-/*Eigenschaft& Fertigkeit::getEigenschaft() const{
-    return eigenschaft;
-}*/
-
-/*void Fertigkeit::setEigenschaft(const Eigenschaft& eigenschaft){
-    this->eigenschaft = eigenschaft;
-}*/
 
 void Fertigkeit::setName(const QString name){
     this->name = name;

@@ -3,14 +3,15 @@
 
 enum Merkmal{
     KLUGHEIT = 0,
-    WILLENSKRAFT = 1,
-    WAHRNEHMUNG = 2,
-    AUSSTRAHLUNG = 3,
-    GESCHICKLICHKEIT = 4,
-    BEWEGLICHKEIT = 5,
-    STAERKE = 6,
-    WIDERSTAND = 7,
-    SIZE_OF_ENUM
+    WILLENSKRAFT,
+    WAHRNEHMUNG,
+    AUSSTRAHLUNG,
+    GESCHICKLICHKEIT,
+    BEWEGLICHKEIT,
+    STAERKE,
+    WIDERSTAND,
+    SIZE_OF_ENUM,
+    NULL_VALUE // Zustand undefiniert.
 };
 
 static const char* MerkmalNamen[]={"KLUGHEIT","WILLENSKRAFT",

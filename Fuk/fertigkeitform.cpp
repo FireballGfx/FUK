@@ -71,12 +71,12 @@ void FertigkeitForm::naechsterSchritt(){
         fertigkeit.setMerkmal(merkmal);
 
 
-        if(!charakter->checkHinzufuegen(fertigkeit)){
+        if(!charakter->checkHinzufuegen(index,fertigkeit)){
             QMessageBox::warning(this,tr("Nein nein das kann ich nicht zulassen!"),tr("Sie haben bereits 4 Fertigkeiten mit der selben Eigenschaft zugewiesen."),QMessageBox::Ok);
             return;
+        }else{
+            charakter->fertigkeitHinzufuegen(index,fertigkeit);
         }
-
-        charakter->fertigkeitHinzufuegen(index,fertigkeit);
 
         if(step == MAX_STEP){
             int result = QMessageBox::question(this,tr("Sicher?"),tr("Sind sie sich sicher, dass sie die Generierung abschließen wollen?"),QMessageBox::Cancel | QMessageBox::Ok);
@@ -100,49 +100,41 @@ void FertigkeitForm::naechsterSchritt(){
 
         ui->lineName->setText(fertigkeit.getName());
         ui->lineBeschreibung->setText(fertigkeit.getSatz());
-        ui->comboEigenschaft->setCurrentIndex(static_cast<int>(merkmal));
+
+        if(fertigkeit.getMerkmal() != Merkmal::NULL_VALUE){
+            comboBoxIndex = static_cast<int>(fertigkeit.getMerkmal());
+        }
+
+        ui->comboEigenschaft->setCurrentIndex(comboBoxIndex);
 
         // Schaltefläche einstellen
         handleButtons();
 
         emit ui->progressBar->valueChanged(step);
-
-
-
-
     }
 }
 
 
 void FertigkeitForm::zurueckSchritt()
 {
-    index--;
-    step--;
+    --index;
+    --step;
 
     handleButtons();
 
     auto charakter = charakterManager->getCurrentCharakter().lock();
     QVector<Fertigkeit>* fertigkeiten = charakter->getFertigkeiten();
 
+    Fertigkeit fertigkeit = fertigkeiten->value(index);
+    QString satz = fertigkeit.getSatz();
+    QString name = fertigkeit.getName();
+    int comboBoxIndex = static_cast<int>(fertigkeit.getMerkmal());
+
     ui->progressBar->setValue(step);
-
-    QString satz = "";
-    QString name = "";
-
-    Fertigkeit fertigkeit;
-
-
-    fertigkeit = fertigkeiten->value(index);
-
-
-
-    satz = fertigkeit.getSatz();
-    name = fertigkeit.getName();
-
 
     ui->lineBeschreibung->setText(satz);
     ui->lineName->setText(name);
-    ui->comboEigenschaft->setCurrentIndex(static_cast<int>(fertigkeit.getMerkmal()));
+    ui->comboEigenschaft->setCurrentIndex(comboBoxIndex);
 
 
     emit ui->progressBar->valueChanged(step);

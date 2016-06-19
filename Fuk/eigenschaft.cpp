@@ -27,30 +27,30 @@ int& Eigenschaft::getWert(){
 }
 
 void Eigenschaft::operator++(){
-    if(wert == 4){
-        throw EigenschaftException("Ungueltiger Wertebereich.");
-    }
+    //if(wert == 4){
+    //    throw EigenschaftException("Ungueltiger Wertebereich.");
+    //}
     ++wert;
 }
 
 void Eigenschaft::operator++(int){
-    if(wert == 4){
-        throw EigenschaftException("Ungueltiger Wertebereich.");
-    }
+    //if(wert == 4){
+    //    throw EigenschaftException("Ungueltiger Wertebereich.");
+    //}
     ++wert;
 }
 
 void Eigenschaft::operator--(){
-    if(wert == 1){
-        throw EigenschaftException("Ungueltiger Wertebereich.");
-    }
+    //if(wert == 1){
+    //    throw EigenschaftException("Ungueltiger Wertebereich.");
+    //}
     --wert;
 }
 
 void Eigenschaft::operator--(int){
-    if(wert == 1){
-        throw EigenschaftException("Ungueltiger Wertebereich.");
-    }
+    //if(wert == 1){
+    //    throw EigenschaftException("Ungueltiger Wertebereich.");
+    //}
     --wert;
 }
 

@@ -19,7 +19,7 @@ private:
 public:
     //Fertigkeit(Eigenschaft &eigenschaft, QString name, QString satz);
     Fertigkeit(Merkmal merkmal, QString name, QString satz);
-    Fertigkeit(){}
+    Fertigkeit(){ merkmal = Merkmal::NULL_VALUE;}
     Fertigkeit(const Fertigkeit& fertigkeit);
 
     QString getName() const;
