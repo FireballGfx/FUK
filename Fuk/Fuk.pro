@@ -21,7 +21,9 @@ SOURCES += main.cpp\
     charakter.cpp \
     charaktermanager.cpp \
     charakterform.cpp \
-    charakterrepository.cpp
+    charakterrepository.cpp \
+    credits.cpp \
+    overview.cpp
 
 HEADERS  += \
     eigenschaft.h \
@@ -34,9 +36,13 @@ HEADERS  += \
     merkmal.h \
     charakterform.h \
     charakterrepository.h \
-    global.h
+    global.h \
+    credits.h \
+    overview.h
 
 FORMS    += \
     mainform.ui \
     fertigkeitform.ui \
-    charakterform.ui
+    charakterform.ui \
+    credits.ui \
+    overview.ui

@@ -3,12 +3,14 @@
 
 #include <memory>
 #include <QWidget>
-#include <charaktermanager.h>
+#include "charaktermanager.h"
 
 #include "global.h"
 
 
 class CharakterForm;
+class Credits;
+class Overview;
 
 namespace Ui {
 class MainForm;
@@ -24,15 +26,16 @@ public:
     ~MainForm();
 
 private slots:
-    void aktualisieren();
+    void druckenDialog();
     void erstellenButtonClicked();
-
-    void clickedOnHinzufuegen(const QModelIndex &index);
+    void showCredits();
 
 private:
 
     Ptr<CharakterForm> charakterForm;
     Ptr<CharakterManager> charakterManager;
+    Ptr<Credits> creditsForm;
+    Ptr<Overview> overviewForm;
     Ui::MainForm *ui;
 
 

@@ -1,8 +1,10 @@
 #include <iostream>
 #include "mainform.h"
 #include "ui_mainform.h"
-#include "charakterform.h"
+#include "credits.h"
 
+#include "charakterform.h"
+#include "overview.h"
 
 
 MainForm::MainForm(QWidget *parent) :
@@ -11,53 +13,41 @@ MainForm::MainForm(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // init
+    this->setFixedSize(325, 66);
 
     charakterManager= Ptr<CharakterManager>(new CharakterManager());
     charakterForm = Ptr<CharakterForm>(new CharakterForm(0,charakterManager));
+    creditsForm = Ptr<Credits>(new Credits(0));
+    overviewForm = Ptr<Overview>(new Overview(0,charakterManager));
 
+    creditsForm->setModal(true);
     charakterForm->setModal(true);
-    loadCharakters();
+    overviewForm->setModal(true);
 
-
-   // QStringList items;
-   // items << "Test";
-   // ui->heldenListWidget->addItems(items);
-
-    // connectors
     connect(ui->erstellenButton,SIGNAL(clicked()),this,SLOT(erstellenButtonClicked()));
-    connect(charakterForm.get(),SIGNAL(beenden()),this,SLOT(aktualisieren()));
+    connect(charakterForm.get(),SIGNAL(beenden()),this,SLOT(druckenDialog()));
+    connect(ui->questionButton,SIGNAL(clicked()),this,SLOT(showCredits()));
 
 }
 
-MainForm::~MainForm()
-{
-    //delete charakterManager;
-    //delete charakterForm;
+MainForm::~MainForm(){
     delete ui;
 }
 
-void MainForm::erstellenButtonClicked()
-{
+void MainForm::erstellenButtonClicked(){
     charakterForm->show();
 }
 
-void MainForm::clickedOnHinzufuegen(const QModelIndex &index)
-{
+void MainForm::druckenDialog(){
 
+    overviewForm->show();
 }
 
-void MainForm::aktualisieren(){
-    ui->heldenListWidget->clear();
+void MainForm::showCredits(){
+    this->hide();
 
-    QHash<int, Charakter>* charaktaere = charakterManager->getCharaktere();
+    creditsForm->show();
 
-    foreach(Charakter charakter, *charaktaere) {
 
-        ui->heldenListWidget->addItem(charakter.getName());
-    }
-}
-
-void MainForm::loadCharakters(){
-
+    this->show();
 }

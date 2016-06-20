@@ -12,6 +12,8 @@ CharakterForm::CharakterForm(QDialog *parent, std::shared_ptr<CharakterManager> 
     fertigkeitForm = Ptr<FertigkeitForm>(new FertigkeitForm(this,charakterManager));
     fertigkeitForm->setModal(true);
 
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+
     connect(ui->weiterButton,SIGNAL(clicked()),this,SLOT(startGenerierung()));
     connect(ui->abbrechenButton,SIGNAL(clicked()),this,SLOT(abbrechenGenerierung()));
     connect(fertigkeitForm->ui->abbrechenButton,SIGNAL(clicked()),this,SLOT(abbrechenGenerierung()));

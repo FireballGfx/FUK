@@ -13,6 +13,8 @@ FertigkeitForm::FertigkeitForm(QDialog *parent, Ptr<CharakterManager> charakterM
     ui->setupUi(this);
     ui->zurueckButton->setEnabled(false);
 
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+
     reset();
 
     for(int i = KLUGHEIT; i != SIZE_OF_ENUM; i++){
