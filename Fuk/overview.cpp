@@ -28,21 +28,31 @@ Overview::Overview(QWidget *parent,Ptr<CharakterManager> charakterManager) :
 
 void Overview::paint(){
 
-    scene = new QGraphicsScene(this);
+    scene = new QGraphicsScene(QRect(0,0,500,600));
 
     elipse = new QGraphicsEllipseItem();
+
+
+    scene->sceneRect();
 
 
     ui->graphicsView->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
 
     ui->graphicsView->setScene(scene);
 
-    QBrush brush(Qt::white);
-    QPen pen(Qt::black);
 
-    elipse = scene->addEllipse(0,0,100,100,pen,brush);
+    //elipse->setFlag(QGraphicsItem::ItemIsMovable);
 
-    elipse->setFlag(QGraphicsItem::ItemIsMovable);
+    QGraphicsSimpleTextItem* textItem = new QGraphicsSimpleTextItem("Hallo Welt");
+    textItem->setPos(20,800);
+
+
+
+    scene->addItem(textItem);
+
+
+
+
 }
 
 
