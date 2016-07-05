@@ -8,7 +8,6 @@
 #include "eigenschaftexception.h"
 #include "charaktermanager.h"
 
-#include "overview.h"
 
 int main(int argc, char *argv[])
 {

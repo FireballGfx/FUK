@@ -24,21 +24,24 @@ Overview::Overview(QWidget *parent,Ptr<CharakterManager> charakterManager) :
 void Overview::paint(WeakPtr<Charakter> charakter){
     Charakter* ch = charakter.lock().get();
 
-    scene = new QGraphicsScene(QRect(0,0,1000,1000));
+    scene = new QGraphicsScene(QRect(0,0,600,800));
     scene->sceneRect();
 
     ui->graphicsView->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     ui->graphicsView->setScene(scene);
 
-
+    QGraphicsSimpleTextItem* headLine = new QGraphicsSimpleTextItem(tr("FUK Charakterdokument - ") + VERSION);
+    QFont helvetica("Helvetica");
+    headLine->setFont(helvetica);
     QGraphicsSimpleTextItem* nameWert = new QGraphicsSimpleTextItem("Name: " + ch->getName());
     QGraphicsSimpleTextItem* angriffsWert = new QGraphicsSimpleTextItem("Angriffswert: " + QString::number(ch->getAngriffsWert()));
-    nameWert->setPos( 10,20);
+    headLine->setPos(10,5);
+    nameWert->setPos(10,25);
     angriffsWert->setPos(10,40);
 
 
 
-
+    scene->addItem(headLine);
     scene->addItem(nameWert);
     scene->addItem(angriffsWert);
 

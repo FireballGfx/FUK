@@ -91,29 +91,39 @@ QString Charakter::getBeschreibung(){
 int Charakter::getAngriffsWert(){
     Eigenschaft st = getEigenschaft(Merkmal::STAERKE);
     Eigenschaft be = getEigenschaft(Merkmal::BEWEGLICHKEIT);
-    int wert = st.getWert() + be.getWert();
+    int wert = st.getWert() + be.getWert() + 1;
 
     return wert;
 }
 
-int Charakter::getFernkampf()
-{
+int Charakter::getFernkampf(){
+    Eigenschaft wa = getEigenschaft(Merkmal::WAHRNEHMUNG);
+    Eigenschaft ge = getEigenschaft(Merkmal::GESCHICKLICHKEIT);
 
+    int wert = wa.getWert() + ge.getWert() + 1;
+    return wert;
 }
 
-int Charakter::getZauberwert()
-{
+int Charakter::getZauberwert(){
+    Eigenschaft wk = getEigenschaft(Merkmal::WILLENSKRAFT);
+    Eigenschaft kl = getEigenschaft(Merkmal::KLUGHEIT);
 
+    int wert = wk.getWert() + kl.getWert() + 1;
+    return wert;
 }
 
-int Charakter::getVerteidigungswert()
-{
+int Charakter::getVerteidigungswert(){
+    Eigenschaft wi = getEigenschaft(Merkmal::WIDERSTAND);
+    Eigenschaft be = getEigenschaft(Merkmal::BEWEGLICHKEIT);
 
+    int wert = wi.getWert() + be.getWert() + 1;
+    return wert;
 }
 
-int Charakter::getGesundheit()
-{
-
+int Charakter::getGesundheit(){
+    Eigenschaft wi = getEigenschaft(Merkmal::WIDERSTAND);
+    int wert = 10 + wi.getWert() + 1;
+    return wert;
 }
 
 QString Charakter::getName(){

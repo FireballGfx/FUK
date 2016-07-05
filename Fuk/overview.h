@@ -36,6 +36,13 @@ private:
 private:
 
 
+
+    QString VERSION = "Version 0.1";
+    QString DEVELOPER = "Avon";
+    QString MESSAGE = "FUK Umbreon!";
+
+
+
 };
 
 #endif // OVERVIEW_H

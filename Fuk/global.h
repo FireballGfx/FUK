@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <memory>
-
+#include <QString>
 
 //template<class T> struct Ptr{
 //    typedef std::shared_ptr<T> SPtr;
