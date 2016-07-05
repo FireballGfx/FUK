@@ -13,13 +13,17 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    //MainForm main;
+    MainForm main;
+
+    main.show();
+
+    //Charakter* c = main.getCurrentChar();
+
+    //int i = c->getAngriffsWert();
 
 
-    //main.show();
-
-    Overview o;
-    o.show();
+    //Overview o;
+    //o.show();
 
     return a.exec();
 }

@@ -34,6 +34,13 @@ public:
     QString getName();
     QString getBeschreibung();
 
+    // abgleitete Werte
+    int getAngriffsWert();
+    int getFernkampf();
+    int getZauberwert();
+    int getVerteidigungswert();
+    int getGesundheit();
+
 };
 
 #endif // CHARAKTER_H

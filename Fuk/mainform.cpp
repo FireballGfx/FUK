@@ -39,7 +39,7 @@ void MainForm::erstellenButtonClicked(){
 }
 
 void MainForm::druckenDialog(){
-
+    overviewForm->paint(charakterManager->getCurrentCharakter());
     overviewForm->show();
 }
 

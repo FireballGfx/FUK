@@ -5,6 +5,8 @@
 #include <QGraphicsScene>
 #include "charaktermanager.h"
 
+class Charakter;
+
 namespace Ui {
 class Overview;
 }
@@ -17,6 +19,7 @@ public:
     explicit Overview(QWidget *parent = 0, Ptr<CharakterManager> charakterManager = 0);
     ~Overview();
 
+    void paint(WeakPtr<Charakter> charakter);
 
 private slots:
     void verwerfen();
@@ -30,9 +33,8 @@ private:
     QGraphicsScene* scene;
     QGraphicsEllipseItem* elipse;
 
-
 private:
-    void paint();
+
 
 };
 

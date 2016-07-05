@@ -88,6 +88,34 @@ QString Charakter::getBeschreibung(){
     return beschreibung;
 }
 
+int Charakter::getAngriffsWert(){
+    Eigenschaft st = getEigenschaft(Merkmal::STAERKE);
+    Eigenschaft be = getEigenschaft(Merkmal::BEWEGLICHKEIT);
+    int wert = st.getWert() + be.getWert();
+
+    return wert;
+}
+
+int Charakter::getFernkampf()
+{
+
+}
+
+int Charakter::getZauberwert()
+{
+
+}
+
+int Charakter::getVerteidigungswert()
+{
+
+}
+
+int Charakter::getGesundheit()
+{
+
+}
+
 QString Charakter::getName(){
     return name;
 }

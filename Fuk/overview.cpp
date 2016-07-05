@@ -5,6 +5,7 @@
 #include <QGraphicsEllipseItem>
 #include <QPrintDialog>
 #include <QPrinter>
+#include <QString>
 
 
 Overview::Overview(QWidget *parent,Ptr<CharakterManager> charakterManager) :
@@ -13,42 +14,34 @@ Overview::Overview(QWidget *parent,Ptr<CharakterManager> charakterManager) :
 {
     ui->setupUi(this);
 
-
-
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
     connect(ui->verwerfenButton,SIGNAL(clicked()),this,SLOT(verwerfen()));
     connect(ui->druckenButton,SIGNAL(clicked()),this,SLOT(drucken()));
-
-
-    paint();
-
 }
 
 
-void Overview::paint(){
+void Overview::paint(WeakPtr<Charakter> charakter){
+    Charakter* ch = charakter.lock().get();
 
-    scene = new QGraphicsScene(QRect(0,0,500,600));
-
-    elipse = new QGraphicsEllipseItem();
-
-
+    scene = new QGraphicsScene(QRect(0,0,1000,1000));
     scene->sceneRect();
 
-
     ui->graphicsView->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
-
     ui->graphicsView->setScene(scene);
 
 
-    //elipse->setFlag(QGraphicsItem::ItemIsMovable);
+    QGraphicsSimpleTextItem* nameWert = new QGraphicsSimpleTextItem("Name: " + ch->getName());
+    QGraphicsSimpleTextItem* angriffsWert = new QGraphicsSimpleTextItem("Angriffswert: " + QString::number(ch->getAngriffsWert()));
+    nameWert->setPos( 10,20);
+    angriffsWert->setPos(10,40);
 
-    QGraphicsSimpleTextItem* textItem = new QGraphicsSimpleTextItem("Hallo Welt");
-    textItem->setPos(20,800);
 
 
 
-    scene->addItem(textItem);
+    scene->addItem(nameWert);
+    scene->addItem(angriffsWert);
+
 
 
 

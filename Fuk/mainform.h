@@ -25,6 +25,12 @@ public:
     explicit MainForm(QWidget *parent = 0);
     ~MainForm();
 
+
+    //todo löschen nach Test
+    Charakter* getCurrentChar(){
+        return charakterManager->getCurrentCharakter().lock().get();
+    }
+
 private slots:
     void druckenDialog();
     void erstellenButtonClicked();
