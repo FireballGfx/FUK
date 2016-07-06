@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     charakterform.cpp \
     charakterrepository.cpp \
     credits.cpp \
-    overview.cpp
+    overview.cpp \
+    startlogo.cpp
 
 HEADERS  += \
     eigenschaft.h \
@@ -38,11 +39,16 @@ HEADERS  += \
     charakterrepository.h \
     global.h \
     credits.h \
-    overview.h
+    overview.h \
+    startlogo.h
 
 FORMS    += \
     mainform.ui \
     fertigkeitform.ui \
     charakterform.ui \
     credits.ui \
-    overview.ui
+    overview.ui \
+    startlogo.ui
+
+RESOURCES += \
+    images.qrc
