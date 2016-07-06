@@ -25,8 +25,7 @@ Startlogo::Startlogo(QWidget *parent) :
 
 Startlogo::~Startlogo()
 {
-    Qt::CursorShape shape = Qt::ArrowCursor;
-    QApplication::setOverrideCursor(QCursor(shape));
+
     delete ui;
 }
 
@@ -37,9 +36,15 @@ void Startlogo::startApp(){
 
 void Startlogo::mouseMoveEvent(QMouseEvent *event){
     if(event->type() == QEvent::MouseMove){
-        QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
+        // QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
+
+
+        Qt::CursorShape shape = Qt::ArrowCursor;
+        QApplication::setOverrideCursor(QCursor(shape));
 
         this->close();
+
+
 
         emit showMainForm();
     }
