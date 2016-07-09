@@ -6,12 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>608</width>
-    <height>691</height>
+    <width>453</width>
+    <height>523</height>
    </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Overview</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="1">
@@ -42,7 +51,7 @@
     </spacer>
    </item>
    <item row="0" column="0" colspan="3">
-    <widget class="QGraphicsView" name="graphicsView">
+    <widget class="CustumView" name="graphicsView">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -58,13 +67,37 @@
      <property name="layoutDirection">
       <enum>Qt::LeftToRight</enum>
      </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
+     </property>
+     <property name="interactive">
+      <bool>true</bool>
+     </property>
+     <property name="sceneRect">
+      <rectf>
+       <x>0.000000000000000</x>
+       <y>0.000000000000000</y>
+       <width>300.000000000000000</width>
+       <height>600.000000000000000</height>
+      </rectf>
+     </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="dragMode">
+      <enum>QGraphicsView::ScrollHandDrag</enum>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CustumView</class>
+   <extends>QGraphicsView</extends>
+   <header>customview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

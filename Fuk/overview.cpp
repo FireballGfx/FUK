@@ -1,5 +1,6 @@
 #include "overview.h"
 #include "ui_overview.h"
+#include "glob.h"
 
 #include <QMessageBox>
 #include <QGraphicsEllipseItem>
@@ -14,7 +15,20 @@ Overview::Overview(QWidget *parent,Ptr<CharakterManager> charakterManager) :
 {
     ui->setupUi(this);
 
+
+
+    scene = new QGraphicsScene(QRect(0,0,300,800));
+
+
+
+    ui->graphicsView->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+    ui->graphicsView->setScene(scene);
+
+    ui->graphicsView->setAlignment(Qt::AlignLeft | Qt::AlignBottom);
+
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+
+    //ui->graphicsView->scrollBarWidgets(Qt::AlignBottom);
 
     connect(ui->verwerfenButton,SIGNAL(clicked()),this,SLOT(verwerfen()));
     connect(ui->druckenButton,SIGNAL(clicked()),this,SLOT(drucken()));
@@ -24,13 +38,8 @@ Overview::Overview(QWidget *parent,Ptr<CharakterManager> charakterManager) :
 void Overview::paint(WeakPtr<Charakter> charakter){
     Charakter* ch = charakter.lock().get();
 
-    scene = new QGraphicsScene(QRect(0,0,600,800));
-    scene->sceneRect();
 
-    ui->graphicsView->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
-    ui->graphicsView->setScene(scene);
-
-    QGraphicsSimpleTextItem* headLine = new QGraphicsSimpleTextItem(tr("FUK Charakterdokument - ") + VERSION);
+    QGraphicsSimpleTextItem* headLine = new QGraphicsSimpleTextItem(tr("FUK Charakterdokument - ") + Constants::version);
     QFont helvetica("Helvetica");
     headLine->setFont(helvetica);
     QGraphicsSimpleTextItem* nameWert = new QGraphicsSimpleTextItem("Name: " + ch->getName());

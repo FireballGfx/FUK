@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     credits.cpp \
     overview.cpp \
     startlogo.cpp \
-    global.cpp
+    global.cpp \
+    customview.cpp
 
 HEADERS  += \
     eigenschaft.h \
@@ -41,7 +42,8 @@ HEADERS  += \
     global.h \
     credits.h \
     overview.h \
-    startlogo.h
+    startlogo.h \
+    customview.h
 
 FORMS    += \
     mainform.ui \

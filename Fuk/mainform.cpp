@@ -39,7 +39,7 @@ void MainForm::erstellenButtonClicked(){
 }
 
 void MainForm::druckenDialog(){
-    overviewForm->paint(charakterManager->getCurrentCharakter());
+    overviewForm->paint(charakterManager->getCurrentCharakter()); // TODO: vielliecht nicht nötig, weil der Chraktermanager bereits in der Klasse bekannt ist.
     overviewForm->show();
 }
 
