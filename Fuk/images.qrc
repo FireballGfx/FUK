@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/data">
-        <file>image/fuk-logo.png</file>
+        <file>image/fuk.jpg</file>
     </qresource>
 </RCC>

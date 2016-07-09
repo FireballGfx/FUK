@@ -1,9 +1,10 @@
-#include "startlogo.h"
-#include "ui_startlogo.h"
-
-
 #include <QPainter>
 #include <QMouseEvent>
+#include <QGraphicsSimpleTextItem>
+#include "startlogo.h"
+#include "ui_startlogo.h"
+#include "global.h"
+
 
 Startlogo::Startlogo(QWidget *parent) :
     QWidget(parent),
@@ -12,7 +13,7 @@ Startlogo::Startlogo(QWidget *parent) :
     ui->setupUi(this);
 
     setWindowFlags( Qt::CustomizeWindowHint | Qt::FramelessWindowHint );
-    setFixedSize(725,507);
+    setFixedSize(424,600);
     QApplication::setOverrideCursor(Qt::BlankCursor);
 
 
@@ -53,9 +54,12 @@ void Startlogo::mouseMoveEvent(QMouseEvent *event){
 void Startlogo::paintEvent(QPaintEvent *event){
     QPainter painter(this);
 
-    QPixmap pixmap(":/data/image/fuk-logo.png");
+    QPixmap pixmap(":/data/image/fuk.jpg");
 
     painter.begin(this);
     painter.drawPixmap(0,0,pixmap);
+
+    painter.setPen(Qt::red);
+    painter.drawText(QPoint(5,590),Constants::version);
     painter.end();
 }

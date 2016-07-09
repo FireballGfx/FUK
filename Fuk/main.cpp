@@ -7,9 +7,13 @@
 #include "charaktermanager.h"
 #include "charakter.h"
 
+
+
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
 
     //Startlogo s;
     //s.show();
@@ -29,7 +33,10 @@ int main(int argc, char *argv[])
     Overview o(NULL,charakterManagerPtr);
     o.show();
 
-
-    //delete charakterManager;
     return a.exec();
 }
+
+
+
+
+

@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     charakterrepository.cpp \
     credits.cpp \
     overview.cpp \
-    startlogo.cpp
+    startlogo.cpp \
+    global.cpp
 
 HEADERS  += \
     eigenschaft.h \

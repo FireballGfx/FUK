@@ -5,9 +5,9 @@
 #include <memory>
 #include <QString>
 
-//template<class T> struct Ptr{
-//    typedef std::shared_ptr<T> SPtr;
-//};
+struct Constants{
+    static const QString version;
+};
 
 template<class T> using Ptr = std::shared_ptr<T>;
 
