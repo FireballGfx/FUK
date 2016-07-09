@@ -1,6 +1,6 @@
 #include "overview.h"
 #include "ui_overview.h"
-#include "glob.h"
+#include "global.h"
 
 #include <QMessageBox>
 #include <QGraphicsEllipseItem>
