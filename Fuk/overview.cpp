@@ -43,15 +43,21 @@ void Overview::paint(WeakPtr<Charakter> charakter){
     QFont helvetica("Helvetica");
     headLine->setFont(helvetica);
     QGraphicsSimpleTextItem* nameWert = new QGraphicsSimpleTextItem("Name: " + ch->getName());
+    QGraphicsSimpleTextItem* beschreibungWert = new QGraphicsSimpleTextItem("Beschreibunssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssg: " + ch->getBeschreibung());
+
+
     QGraphicsSimpleTextItem* angriffsWert = new QGraphicsSimpleTextItem("Angriffswert: " + QString::number(ch->getAngriffsWert()));
     headLine->setPos(10,5);
     nameWert->setPos(10,25);
+    beschreibungWert->setPos(10,30);
     angriffsWert->setPos(10,40);
 
 
+    scene->addText()
 
     scene->addItem(headLine);
     scene->addItem(nameWert);
+    scene->addItem(beschreibungWert);
     scene->addItem(angriffsWert);
 
 

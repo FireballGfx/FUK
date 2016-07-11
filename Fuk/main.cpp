@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
     auto charakterManager = charakterManagerPtr.get();
 
-    charakterManager->addCharakterBeschreibung("Test","TEst");
+    charakterManager->addCharakterBeschreibung("Name","Beschreibung");
 
     auto charakter = charakterManager->getCurrentCharakter().lock();
     QVector<Fertigkeit>* fertigkeiten = charakter->getFertigkeiten();
