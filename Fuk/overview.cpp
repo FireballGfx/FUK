@@ -15,20 +15,13 @@ Overview::Overview(QWidget *parent,Ptr<CharakterManager> charakterManager) :
 {
     ui->setupUi(this);
 
-
-
-    scene = new QGraphicsScene(QRect(0,0,300,800));
-
-
-
+    ui->graphicsView->setAlignment(Qt::AlignLeft | Qt::AlignTop);
     ui->graphicsView->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+
+    scene = new QGraphicsScene();
     ui->graphicsView->setScene(scene);
 
-    ui->graphicsView->setAlignment(Qt::AlignLeft | Qt::AlignBottom);
-
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
-
-    //ui->graphicsView->scrollBarWidgets(Qt::AlignBottom);
 
     connect(ui->verwerfenButton,SIGNAL(clicked()),this,SLOT(verwerfen()));
     connect(ui->druckenButton,SIGNAL(clicked()),this,SLOT(drucken()));
@@ -53,7 +46,7 @@ void Overview::paint(WeakPtr<Charakter> charakter){
     angriffsWert->setPos(10,40);
 
 
-    scene->addText()
+    //scene->addText()
 
     scene->addItem(headLine);
     scene->addItem(nameWert);
