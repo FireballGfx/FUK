@@ -23,17 +23,17 @@
    <enum>Qt::LeftToRight</enum>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="1">
-    <widget class="QPushButton" name="verwerfenButton">
-     <property name="text">
-      <string>Verwerfen</string>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="2">
     <widget class="QPushButton" name="druckenButton">
      <property name="text">
       <string>Drucken</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QPushButton" name="verwerfenButton">
+     <property name="text">
+      <string>Verwerfen</string>
      </property>
     </widget>
    </item>
@@ -51,7 +51,7 @@
     </spacer>
    </item>
    <item row="0" column="0" colspan="3">
-    <widget class="CustumView" name="graphicsView">
+    <widget class="CustomView" name="graphicsView">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -93,7 +93,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>CustumView</class>
+   <class>CustomView</class>
    <extends>QGraphicsView</extends>
    <header>customview.h</header>
   </customwidget>

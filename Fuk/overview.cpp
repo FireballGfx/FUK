@@ -15,7 +15,9 @@ Overview::Overview(QWidget *parent,Ptr<CharakterManager> charakterManager) :
 {
     ui->setupUi(this);
 
-    ui->graphicsView->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+
+    ui->graphicsView->setSceneRect(QRectF()); // ätzend geht aber nicht anders
+
     ui->graphicsView->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
 
     scene = new QGraphicsScene();
@@ -36,7 +38,7 @@ void Overview::paint(WeakPtr<Charakter> charakter){
     QFont helvetica("Helvetica");
     headLine->setFont(helvetica);
     QGraphicsSimpleTextItem* nameWert = new QGraphicsSimpleTextItem("Name: " + ch->getName());
-    QGraphicsSimpleTextItem* beschreibungWert = new QGraphicsSimpleTextItem("Beschreibunssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssg: " + ch->getBeschreibung());
+    QGraphicsSimpleTextItem* beschreibungWert = new QGraphicsSimpleTextItem("Beschreibung: " + ch->getBeschreibung());
 
 
     QGraphicsSimpleTextItem* angriffsWert = new QGraphicsSimpleTextItem("Angriffswert: " + QString::number(ch->getAngriffsWert()));
