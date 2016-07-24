@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
     auto charakterManager = charakterManagerPtr.get();
 
-    charakterManager->addCharakterBeschreibung("Name","Beschreibung");
+    charakterManager->addCharakterBeschreibung("Name","Beschreibung, die etwas länger sein könnte. Können wir das irgendwie umbrechen? lalalallalalalalalala - Das könnte hier nicht mehr passen! lalalalalalalalalalalalalalalalala");
 
     auto charakter = charakterManager->getCurrentCharakter().lock();
     QVector<Fertigkeit>* fertigkeiten = charakter->getFertigkeiten();

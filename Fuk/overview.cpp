@@ -33,19 +33,23 @@ Overview::Overview(QWidget *parent,Ptr<CharakterManager> charakterManager) :
 void Overview::paint(WeakPtr<Charakter> charakter){
     Charakter* ch = charakter.lock().get();
 
-
     QGraphicsSimpleTextItem* headLine = new QGraphicsSimpleTextItem(tr("FUK Charakterdokument - ") + Constants::version);
+
     QFont helvetica("Helvetica");
     headLine->setFont(helvetica);
+
     QGraphicsSimpleTextItem* nameWert = new QGraphicsSimpleTextItem("Name: " + ch->getName());
     QGraphicsSimpleTextItem* beschreibungWert = new QGraphicsSimpleTextItem("Beschreibung: " + ch->getBeschreibung());
-
-
     QGraphicsSimpleTextItem* angriffsWert = new QGraphicsSimpleTextItem("Angriffswert: " + QString::number(ch->getAngriffsWert()));
-    headLine->setPos(10,5);
-    nameWert->setPos(10,25);
-    beschreibungWert->setPos(10,30);
-    angriffsWert->setPos(10,40);
+
+    int x = 10;
+    int y = 10;
+
+
+    headLine->setPos(x,y);
+    nameWert->setPos(x,y + 20);
+    beschreibungWert->setPos(x,y + 30);
+    angriffsWert->setPos(x,y + 40);
 
 
     //scene->addText()
