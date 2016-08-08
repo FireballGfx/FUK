@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>Overview</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/data/image/icon/FUK_Logo_Version_1_256.png</normaloff>:/data/image/icon/FUK_Logo_Version_1_256.png</iconset>
+  </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
   </property>
@@ -98,6 +102,8 @@
    <header>customview.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

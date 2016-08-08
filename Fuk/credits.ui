@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Credits</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/data/image/icon/FUK_Logo_Version_1_256.png</normaloff>:/data/image/icon/FUK_Logo_Version_1_256.png</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTextEdit" name="textEdit">
@@ -56,6 +60,8 @@ p, li { white-space: pre-wrap; }
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

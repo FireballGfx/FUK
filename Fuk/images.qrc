@@ -1,5 +1,11 @@
 <RCC>
     <qresource prefix="/data">
         <file>image/fuk.jpg</file>
+        <file>image/icon/FUK_Logo_Version_1_16.png</file>
+        <file>image/icon/FUK_Logo_Version_1_24.png</file>
+        <file>image/icon/FUK_Logo_Version_1_32.png</file>
+        <file>image/icon/FUK_Logo_Version_1_48.png</file>
+        <file>image/icon/FUK_Logo_Version_1_256.png</file>
+        <file>image/icon/FUK_Logo_Version_1_256.ico</file>
     </qresource>
 </RCC>

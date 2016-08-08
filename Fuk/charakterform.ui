@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Name und Beschreibung</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/data/image/icon/FUK_Logo_Version_1_256.png</normaloff>:/data/image/icon/FUK_Logo_Version_1_256.png</iconset>
+  </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
   </property>
@@ -82,6 +86,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

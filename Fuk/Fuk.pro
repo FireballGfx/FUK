@@ -57,3 +57,11 @@ FORMS    += \
 
 RESOURCES += \
     images.qrc
+
+win32{
+    RC_FILE = Fuk.rc
+}
+
+macx {
+    ICON = FUK_Logo_Version_1_256.png.icns
+}
