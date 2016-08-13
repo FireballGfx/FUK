@@ -63,5 +63,5 @@ win32{
 }
 
 macx {
-    ICON = FUK_Logo_Version_1_256.png.icns
+    ICON = FUK_Logo_Version_1_Transparent_256.png.icns
 }
