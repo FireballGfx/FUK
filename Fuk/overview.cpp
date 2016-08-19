@@ -2,6 +2,7 @@
 #include "ui_overview.h"
 #include "global.h"
 #include "textdocumentitem.h"
+#include "headlinedocumentitem.h"
 #include <QMessageBox>
 #include <QGraphicsEllipseItem>
 #include <QPrintDialog>
@@ -35,34 +36,9 @@ void Overview::paint(WeakPtr<Charakter> charakter){
     int y = 10;
 
     Charakter* ch = charakter.lock().get();
-    QGraphicsSimpleTextItem* headLine = new QGraphicsSimpleTextItem(tr("FUK Charakterdokument - ") + Constants::version);
+    HeadLineDocumentItem* item = new HeadLineDocumentItem(x,y,600,15, tr("FUK Charakterdokument - ") + Constants::version);
 
-    QFont helvetica("Helvetica");
-    headLine->setFont(helvetica);
-
-    QGraphicsSimpleTextItem* nameWert = new QGraphicsSimpleTextItem("Name: " + ch->getName());
-    QGraphicsSimpleTextItem* angriffsWert = new QGraphicsSimpleTextItem("Angriffswert: " + QString::number(ch->getAngriffsWert()));
-    QGraphicsSimpleTextItem* beschreibungUeberschrift = new QGraphicsSimpleTextItem("Beschreibung:");
-
-
-
-
-    headLine->setPos(x,y);
-    nameWert->setPos(x,y + 20);
-
-    angriffsWert->setPos(x,y + 40);
-    beschreibungUeberschrift->setPos(x,y + 60);
-
-    TextDocumentItem* textDocumentItem = new TextDocumentItem(x,y + 70,750,120,ch->getBeschreibung());
-
-    scene->addItem(headLine);
-    scene->addItem(nameWert);
-    scene->addItem(beschreibungUeberschrift);
-    scene->addItem(textDocumentItem);
-    scene->addItem(angriffsWert);
-
-
-
+    scene->addItem(item);
 
 
 }

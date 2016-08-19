@@ -27,7 +27,13 @@ SOURCES += main.cpp\
     startlogo.cpp \
     global.cpp \
     customview.cpp \
-    textdocumentitem.cpp
+    textdocumentitem.cpp \
+    headlinedocumentitem.cpp \
+    beschreibungdocumentitem.cpp \
+    eigenschaftendocumentitem.cpp \
+    abgleitetewertedocumentitem.cpp \
+    fertigkeitdocumentitem.cpp \
+    basedocumentitem.cpp
 
 HEADERS  += \
     eigenschaft.h \
@@ -45,7 +51,13 @@ HEADERS  += \
     overview.h \
     startlogo.h \
     customview.h \
-    textdocumentitem.h
+    textdocumentitem.h \
+    headlinedocumentitem.h \
+    beschreibungdocumentitem.h \
+    eigenschaftendocumentitem.h \
+    abgleitetewertedocumentitem.h \
+    fertigkeitdocumentitem.h \
+    basedocumentitem.h
 
 FORMS    += \
     mainform.ui \
