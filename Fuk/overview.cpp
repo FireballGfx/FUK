@@ -1,8 +1,12 @@
 #include "overview.h"
 #include "ui_overview.h"
 #include "global.h"
-#include "textdocumentitem.h"
+//#include "textdocumentitem.h"
+#include "beschreibungdocumentitem.h"
 #include "headlinedocumentitem.h"
+
+
+
 #include <QMessageBox>
 #include <QGraphicsEllipseItem>
 #include <QPrintDialog>
@@ -28,6 +32,7 @@ Overview::Overview(QWidget *parent,Ptr<CharakterManager> charakterManager) :
 
     connect(ui->verwerfenButton,SIGNAL(clicked()),this,SLOT(verwerfen()));
     connect(ui->druckenButton,SIGNAL(clicked()),this,SLOT(drucken()));
+
 }
 
 
@@ -38,7 +43,13 @@ void Overview::paint(WeakPtr<Charakter> charakter){
     Charakter* ch = charakter.lock().get();
     HeadLineDocumentItem* item = new HeadLineDocumentItem(x,y,600,15, tr("FUK Charakterdokument - ") + Constants::version);
 
+    y+= 20;
+
+    BeschreibungDocumentItem* beschreibungDocumentItem = new BeschreibungDocumentItem(x,y,600,40,charakter);
+
+
     scene->addItem(item);
+    scene->addItem(beschreibungDocumentItem);
 
 
 }

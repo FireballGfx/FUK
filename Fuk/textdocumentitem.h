@@ -1,5 +1,5 @@
-#ifndef BESCHREIBUNGDOCUMENTITEM_H
-#define BESCHREIBUNGDOCUMENTITEM_H
+#ifndef TEXTDOCUMENTITEM_H
+#define TEXTDOCUMENTITEM_H
 
 #include <QPainter>
 #include <QGraphicsItem>
@@ -25,4 +25,4 @@ public:
     // keine Events
 };
 
-#endif // BESCHREIBUNGDOCUMENTITEM_H
+#endif // TEXTDOCUMENTITEM_H

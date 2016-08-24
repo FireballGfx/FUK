@@ -11,7 +11,7 @@ private:
     QString headline;
 
 public:
-    HeadLineDocumentItem(int x, int y, int width, int heigth, QString headline);
+    explicit HeadLineDocumentItem(int x, int y, int width, int heigth, QString headline);
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
