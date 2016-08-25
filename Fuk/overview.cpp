@@ -45,7 +45,7 @@ void Overview::paint(WeakPtr<Charakter> charakter){
 
     y+= 20;
 
-    BeschreibungDocumentItem* beschreibungDocumentItem = new BeschreibungDocumentItem(x,y,600,40,charakter);
+    BeschreibungDocumentItem* beschreibungDocumentItem = new BeschreibungDocumentItem(x,y,600,60,charakter);
 
 
     scene->addItem(item);
