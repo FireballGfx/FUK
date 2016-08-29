@@ -10,7 +10,7 @@
 
 class BeschreibungDocumentItem : public BaseDocumentItem
 {
-private:
+protected:
     WeakPtr<Charakter> charakter;
 
 public:
