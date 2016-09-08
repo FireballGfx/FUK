@@ -13,7 +13,7 @@ private:
 
 public:
     EigenschaftenDocumentItem(int x, int y, int width, int heigth,
-                              Ptr<Charakter> charakter);
+                              Ptr<Charakter>& charakter);
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 };

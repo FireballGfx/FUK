@@ -3,7 +3,7 @@
 
 
 EigenschaftenDocumentItem::EigenschaftenDocumentItem(int x, int y, int width, int heigth,
-                                                     Ptr<Charakter> charakter)
+                                                     Ptr<Charakter>& charakter)
     : BeschreibungDocumentItem(x,y,width,heigth,std::move(charakter)){
 
 }
