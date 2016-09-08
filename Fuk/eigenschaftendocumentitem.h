@@ -9,11 +9,11 @@
 class EigenschaftenDocumentItem : public BeschreibungDocumentItem
 {
 private:
-    WeakPtr<Charakter> charakter;
+    Ptr<Charakter> charakter;
 
 public:
     EigenschaftenDocumentItem(int x, int y, int width, int heigth,
-                              WeakPtr<Charakter> charakter);
+                              Ptr<Charakter> charakter);
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 };

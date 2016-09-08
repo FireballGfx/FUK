@@ -4,7 +4,7 @@
 //#include "textdocumentitem.h"
 #include "beschreibungdocumentitem.h"
 #include "headlinedocumentitem.h"
-
+#include "eigenschaftendocumentitem.h"
 
 
 #include <QMessageBox>
@@ -36,20 +36,24 @@ Overview::Overview(QWidget *parent,Ptr<CharakterManager> charakterManager) :
 }
 
 
-void Overview::paint(WeakPtr<Charakter> charakter){
+void Overview::paint(Ptr<Charakter> charakter){
     int x = 10;
     int y = 10;
 
-    Charakter* ch = charakter.lock().get();
+    Charakter* ch = charakter.get();
     HeadLineDocumentItem* item = new HeadLineDocumentItem(x,y,600,15, tr("FUK Charakterdokument - ") + Constants::version);
 
-    y+= 20;
+    y+= 15;
 
     BeschreibungDocumentItem* beschreibungDocumentItem = new BeschreibungDocumentItem(x,y,600,60,charakter);
 
+    y+= 60;
+
+    EigenschaftenDocumentItem* eigenschaftenDocumentItem = new EigenschaftenDocumentItem(x,y,600,80,charakter);
 
     scene->addItem(item);
     scene->addItem(beschreibungDocumentItem);
+    scene->addItem(eigenschaftenDocumentItem);
 
 
 }

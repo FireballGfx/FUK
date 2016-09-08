@@ -22,7 +22,7 @@ public:
     Charakter& findCharakter(int key);
     void addCharakterBeschreibung(QString name, QString beschreibung);
     void saveCharakterToFile();
-    WeakPtr<Charakter> getCurrentCharakter();
+    Ptr<Charakter> getCurrentCharakter();
 
 
 

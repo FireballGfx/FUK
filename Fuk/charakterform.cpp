@@ -41,7 +41,7 @@ void CharakterForm::startGenerierung(){
 }
 
 void CharakterForm::abschliessenGenerierung(){
-    charakterManager->insert(*(charakterManager->getCurrentCharakter().lock().get()));
+    charakterManager->insert(*(charakterManager->getCurrentCharakter().get()));
     charakterManager->saveCharakterToFile();
     resetForm();
     emit beenden();

@@ -1,8 +1,8 @@
 #include "beschreibungdocumentitem.h"
 
 
-BeschreibungDocumentItem::BeschreibungDocumentItem(int x, int y, int width, int heigth, WeakPtr<Charakter> charakter): BaseDocumentItem(x,y,width,heigth),charakter(charakter){
-
+BeschreibungDocumentItem::BeschreibungDocumentItem(int x, int y, int width, int heigth, Ptr<Charakter> charakter): BaseDocumentItem(x,y,width,heigth),charakter(std::move(charakter)){
+    int i=0;
 }
 
 void BeschreibungDocumentItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){

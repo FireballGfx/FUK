@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 
     charakterManager->addCharakterBeschreibung("Name","Beschreibung, die etwas länger sein könnte. Können wir das irgendwie umbrechen? lalalallalalalalalala - Das könnte hier nicht mehr passen! lalalalalalalalalalalalalalalalala");
 
-    auto charakter = charakterManager->getCurrentCharakter().lock();
+    auto charakter = charakterManager->getCurrentCharakter().get();
     QVector<Fertigkeit>* fertigkeiten = charakter->getFertigkeiten();
 
 

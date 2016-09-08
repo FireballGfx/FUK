@@ -59,7 +59,7 @@ bool FertigkeitForm::validateForm(){
 }
 
 void FertigkeitForm::naechsterSchritt(){
-    auto charakter = charakterManager->getCurrentCharakter().lock();
+    auto charakter = charakterManager->getCurrentCharakter().get();
     QVector<Fertigkeit>* fertigkeiten = charakter->getFertigkeiten();
     Fertigkeit fertigkeit = fertigkeiten->value(index);
     int comboBoxIndex = static_cast<int>(ui->comboEigenschaft->currentIndex());
@@ -124,7 +124,7 @@ void FertigkeitForm::zurueckSchritt()
 
     handleButtons();
 
-    auto charakter = charakterManager->getCurrentCharakter().lock();
+    auto charakter = charakterManager->getCurrentCharakter().get();
     QVector<Fertigkeit>* fertigkeiten = charakter->getFertigkeiten();
 
     Fertigkeit fertigkeit = fertigkeiten->value(index);

@@ -14,7 +14,7 @@ protected:
     WeakPtr<Charakter> charakter;
 
 public:
-    explicit BeschreibungDocumentItem(int x, int y, int width, int heigth,WeakPtr<Charakter> charakter);
+    explicit BeschreibungDocumentItem(int x, int y, int width, int heigth,Ptr<Charakter> charakter);
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 };

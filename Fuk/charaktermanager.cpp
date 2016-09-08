@@ -58,6 +58,6 @@ QHash<int, Charakter> *CharakterManager::getCharaktere(){
     return &charaktere;
 }
 
-WeakPtr<Charakter> CharakterManager::getCurrentCharakter(){
+Ptr<Charakter> CharakterManager::getCurrentCharakter(){
     return currentCharakter;
 }

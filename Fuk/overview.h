@@ -19,7 +19,7 @@ public:
     explicit Overview(QWidget *parent = 0, Ptr<CharakterManager> charakterManager = 0);
     ~Overview();
 
-    void paint(WeakPtr<Charakter> charakter);
+    void paint(Ptr<Charakter> charakter);
 
 private slots:
     void verwerfen();

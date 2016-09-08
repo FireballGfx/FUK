@@ -3,15 +3,19 @@
 
 
 EigenschaftenDocumentItem::EigenschaftenDocumentItem(int x, int y, int width, int heigth,
-                                                     WeakPtr<Charakter> charakter)
-    : BeschreibungDocumentItem(x,y,width,heigth,charakter){
+                                                     Ptr<Charakter> charakter)
+    : BeschreibungDocumentItem(x,y,width,heigth,std::move(charakter)){
 
 }
 
 void EigenschaftenDocumentItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
-    Charakter* ch = charakter.lock().get();
+    Charakter* ch = charakter.get();
     QRectF rect = boundingRect();
 
+  //  Eigenschaft klugheit = ch->getEigenschaft(KLUGHEIT);
+
+
+    QVector<Fertigkeit>* fertigkeiten = ch->getFertigkeiten();
 
     painter->drawRect(boundingRect());
 }

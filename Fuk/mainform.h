@@ -28,7 +28,7 @@ public:
 
     //todo löschen nach Test
     Charakter* getCurrentChar(){
-        return charakterManager->getCurrentCharakter().lock().get();
+        return charakterManager->getCurrentCharakter().get();
     }
 
 private slots:
