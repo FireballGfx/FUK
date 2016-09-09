@@ -6,7 +6,7 @@ BeschreibungDocumentItem::BeschreibungDocumentItem(int x, int y, int width, int 
 }
 
 void BeschreibungDocumentItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
-    Charakter* ch = charakter.lock().get();
+    Charakter* ch = charakter.get();
     QRectF rect = boundingRect();
 
     int x = rect.x();

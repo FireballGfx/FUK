@@ -11,7 +11,7 @@
 class BeschreibungDocumentItem : public BaseDocumentItem
 {
 protected:
-    WeakPtr<Charakter> charakter;
+    Ptr<Charakter> charakter;
 
 public:
     explicit BeschreibungDocumentItem(int x, int y, int width, int heigth,Ptr<Charakter> charakter);

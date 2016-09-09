@@ -8,12 +8,12 @@
 
 class EigenschaftenDocumentItem : public BeschreibungDocumentItem
 {
-private:
-    Ptr<Charakter> charakter;
+//protected:
+//    Ptr<Charakter> charakter;
 
 public:
     EigenschaftenDocumentItem(int x, int y, int width, int heigth,
-                              Ptr<Charakter>& charakter);
+                              Ptr<Charakter> charakter);
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 };
