@@ -17,14 +17,34 @@ void EigenschaftenDocumentItem::paint(QPainter *painter, const QStyleOptionGraph
     int heigth = rect.height();
 
 
-    Eigenschaft eigenschaftKl = ch->getEigenschaft(KLUGHEIT);
+    QRectF kl(x,y+15,width,heigth);
+    QRectF wk(x,y+30,width,heigth);
+
+    QFont font = painter->font();
+
+    QFont boldFont = painter->font();
+    boldFont.setBold(true);
+    painter->setFont(boldFont);
+    painter->drawText(boundingRect(),Qt::TextWordWrap, "Eigenschaften");
+    painter->setFont(font);
 
 
-    QRectF klugheitRect(x,y+30,width,heigth);
-    painter->drawText(klugheitRect,Qt::TextWordWrap, "" + eigenschaftKl.getWert());
+    int ikl = ch->getEigenschaft(KLUGHEIT).getWert();
+    QString klString = QString("Klugheit [KL]");
 
+    int iwk = ch->getEigenschaft(WILLENSKRAFT).getWert();
+    QString wkString = QString("Willenskraft [WK]");
 
-    QVector<Fertigkeit>* fertigkeiten = ch->getFertigkeiten();
+    painter->drawText(kl,Qt::TextWordWrap, klString);
+    painter->drawText(wk,Qt::TextWordWrap, wkString);
 
+    QBrush brush(Qt::green);
+    QBrush saveBrush = painter->brush();
+    painter->setBrush(brush);
+    painter->drawEllipse(x+90,y+20,5,5);
+    painter->drawEllipse(x+90,y+35,5,5);
+    painter->setBrush(saveBrush);
+    painter->setPen(QPen(Qt::black));
     painter->drawRect(boundingRect());
+
 }
