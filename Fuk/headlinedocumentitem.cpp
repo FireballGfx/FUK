@@ -4,6 +4,8 @@ HeadLineDocumentItem::HeadLineDocumentItem(int x, int y, int width, int heigth, 
 }
 
 void HeadLineDocumentItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
+    painter->setFont(QFont("times",22));
+
     painter->drawText(boundingRect(),Qt::TextWordWrap, headline);
 
     painter->setPen(QPen(Qt::black));

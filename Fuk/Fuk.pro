@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     eigenschaftendocumentitem.cpp \
     abgleitetewertedocumentitem.cpp \
     fertigkeitdocumentitem.cpp \
-    basedocumentitem.cpp
+    basedocumentitem.cpp \
+    bogendocumentitem.cpp
 
 HEADERS  += \
     eigenschaft.h \
@@ -57,7 +58,8 @@ HEADERS  += \
     eigenschaftendocumentitem.h \
     abgleitetewertedocumentitem.h \
     fertigkeitdocumentitem.h \
-    basedocumentitem.h
+    basedocumentitem.h \
+    bogendocumentitem.h
 
 FORMS    += \
     mainform.ui \

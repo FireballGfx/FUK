@@ -1,7 +1,7 @@
 #include "overview.h"
 #include "ui_overview.h"
 #include "global.h"
-//#include "textdocumentitem.h"
+#include "bogendocumentitem.h"
 #include "beschreibungdocumentitem.h"
 #include "headlinedocumentitem.h"
 #include "eigenschaftendocumentitem.h"
@@ -37,11 +37,13 @@ Overview::Overview(QWidget *parent,Ptr<CharakterManager> charakterManager) :
 
 
 void Overview::paint(Ptr<Charakter> charakter){
+
+    BogenDocumentItem* bogen = new BogenDocumentItem(0,0,1748,2480);
+
     int x = 10;
     int y = 10;
 
-    Charakter* ch = charakter.get();
-    HeadLineDocumentItem* item = new HeadLineDocumentItem(x,y,600,15, tr("FUK Charakterdokument - ") + Constants::version);
+    HeadLineDocumentItem* item = new HeadLineDocumentItem(x,y,600,200, tr("FUK Charakterdokument - ") + Constants::version);
 
     y+= 15;
 
@@ -51,6 +53,8 @@ void Overview::paint(Ptr<Charakter> charakter){
 
     EigenschaftenDocumentItem* eigenschaftenDocumentItem = new EigenschaftenDocumentItem(x,y,600,80,charakter);
 
+
+    scene->addItem(bogen);
     scene->addItem(item);
     scene->addItem(beschreibungDocumentItem);
     scene->addItem(eigenschaftenDocumentItem);
