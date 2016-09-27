@@ -2,6 +2,6 @@
     <qresource prefix="/data">
         <file>image/fuk.jpg</file>
         <file>image/icon/FUK_Logo_Version_1_Transparent_256.ico</file>
-        <file>image/bogen.jpg</file>
+        <file>image/Charakterbogen.png</file>
     </qresource>
 </RCC>
