@@ -5,14 +5,14 @@
 
 Charakter::Charakter(QString name, QString beschreibung){
 
-    Eigenschaft klugheit(KLUGHEIT,0);
-    Eigenschaft willenskraft(WILLENSKRAFT,0);
-    Eigenschaft wahrnehmung(WAHRNEHMUNG,0);
-    Eigenschaft ausstrahlung(AUSSTRAHLUNG,0);
-    Eigenschaft geschicklichkeit(GESCHICKLICHKEIT,0);
-    Eigenschaft beweglichkeit(BEWEGLICHKEIT,0);
-    Eigenschaft staerke(STAERKE,0);
-    Eigenschaft widerstand(WIDERSTAND,0);
+    Eigenschaft klugheit(KLUGHEIT,1);
+    Eigenschaft willenskraft(WILLENSKRAFT,1);
+    Eigenschaft wahrnehmung(WAHRNEHMUNG,1);
+    Eigenschaft ausstrahlung(AUSSTRAHLUNG,1);
+    Eigenschaft geschicklichkeit(GESCHICKLICHKEIT,1);
+    Eigenschaft beweglichkeit(BEWEGLICHKEIT,1);
+    Eigenschaft staerke(STAERKE,1);
+    Eigenschaft widerstand(WIDERSTAND,1);
 
     eigenschaften[KLUGHEIT] = klugheit;
     eigenschaften[WILLENSKRAFT] = willenskraft;
@@ -91,7 +91,7 @@ QString Charakter::getBeschreibung(){
 int Charakter::getAngriffsWert(){
     Eigenschaft st = getEigenschaft(Merkmal::STAERKE);
     Eigenschaft be = getEigenschaft(Merkmal::BEWEGLICHKEIT);
-    int wert = st.getWert() + be.getWert() + 1;
+    int wert = st.getWert() + be.getWert();
 
     return wert;
 }
@@ -100,7 +100,7 @@ int Charakter::getFernkampf(){
     Eigenschaft wa = getEigenschaft(Merkmal::WAHRNEHMUNG);
     Eigenschaft ge = getEigenschaft(Merkmal::GESCHICKLICHKEIT);
 
-    int wert = wa.getWert() + ge.getWert() + 1;
+    int wert = wa.getWert() + ge.getWert();
     return wert;
 }
 
@@ -108,7 +108,7 @@ int Charakter::getZauberwert(){
     Eigenschaft wk = getEigenschaft(Merkmal::WILLENSKRAFT);
     Eigenschaft kl = getEigenschaft(Merkmal::KLUGHEIT);
 
-    int wert = wk.getWert() + kl.getWert() + 1;
+    int wert = wk.getWert() + kl.getWert();
     return wert;
 }
 
@@ -116,13 +116,13 @@ int Charakter::getVerteidigungswert(){
     Eigenschaft wi = getEigenschaft(Merkmal::WIDERSTAND);
     Eigenschaft be = getEigenschaft(Merkmal::BEWEGLICHKEIT);
 
-    int wert = wi.getWert() + be.getWert() + 1;
+    int wert = wi.getWert() + be.getWert();
     return wert;
 }
 
 int Charakter::getGesundheit(){
     Eigenschaft wi = getEigenschaft(Merkmal::WIDERSTAND);
-    int wert = 10 + wi.getWert() + 1;
+    int wert = 20 + wi.getWert();
     return wert;
 }
 

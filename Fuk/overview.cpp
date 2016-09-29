@@ -40,22 +40,14 @@ void Overview::paint(Ptr<Charakter> charakter){
 
     BogenDocumentItem* bogen = new BogenDocumentItem(0,0,1748,2480);
 
-    int x = 10;
-    int y = 10;
+    HeadLineDocumentItem* headline = new HeadLineDocumentItem(112,281,869,107, tr("Charakterdokument - ") + Constants::version,charakter);
 
-    HeadLineDocumentItem* item = new HeadLineDocumentItem(x,y,600,200, tr("FUK Charakterdokument - ") + Constants::version);
+    BeschreibungDocumentItem* beschreibungDocumentItem = new BeschreibungDocumentItem(112,499,868,436,charakter);
 
-    y+= 15;
-
-    BeschreibungDocumentItem* beschreibungDocumentItem = new BeschreibungDocumentItem(x,y,600,60,charakter);
-
-    y+= 60;
-
-    EigenschaftenDocumentItem* eigenschaftenDocumentItem = new EigenschaftenDocumentItem(x,y,600,80,charakter);
-
+    EigenschaftenDocumentItem* eigenschaftenDocumentItem = new EigenschaftenDocumentItem(1090,281,554,645,charakter);
 
     scene->addItem(bogen);
-    scene->addItem(item);
+    scene->addItem(headline);
     scene->addItem(beschreibungDocumentItem);
     scene->addItem(eigenschaftenDocumentItem);
 

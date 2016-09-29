@@ -2,11 +2,11 @@
 #include "eigenschaftexception.h"
 
 Eigenschaft::Eigenschaft(){
-    wert = 0;
+    wert = 1;
 }
 
 Eigenschaft::Eigenschaft(Merkmal merkmal, int wert){
-    if(wert < 0 || wert >4){
+    if(wert < 1 || wert >5){
         throw EigenschaftException("Ungueltiger Wertebereich.");
     }
     this->merkmal = merkmal;
@@ -27,30 +27,18 @@ int& Eigenschaft::getWert(){
 }
 
 void Eigenschaft::operator++(){
-    //if(wert == 4){
-    //    throw EigenschaftException("Ungueltiger Wertebereich.");
-    //}
     ++wert;
 }
 
 void Eigenschaft::operator++(int){
-    //if(wert == 4){
-    //    throw EigenschaftException("Ungueltiger Wertebereich.");
-    //}
     ++wert;
 }
 
 void Eigenschaft::operator--(){
-    //if(wert == 1){
-    //    throw EigenschaftException("Ungueltiger Wertebereich.");
-    //}
     --wert;
 }
 
 void Eigenschaft::operator--(int){
-    //if(wert == 1){
-    //    throw EigenschaftException("Ungueltiger Wertebereich.");
-    //}
     --wert;
 }
 

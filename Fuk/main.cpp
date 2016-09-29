@@ -15,11 +15,11 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
 
-   // Startlogo s;
-   // s.show();
+    Startlogo s;
+    s.show();
 
 
-    Ptr<CharakterManager> charakterManagerPtr = Ptr<CharakterManager>(new CharakterManager());
+  /*  Ptr<CharakterManager> charakterManagerPtr = Ptr<CharakterManager>(new CharakterManager());
 
     auto charakterManager = charakterManagerPtr.get();
 
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     Overview o(NULL,charakterManagerPtr);
     o.paint(charakterManagerPtr->getCurrentCharakter());
     o.show();
-
+*/
     return a.exec();
 }
 
