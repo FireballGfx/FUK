@@ -31,7 +31,6 @@ SOURCES += main.cpp\
     headlinedocumentitem.cpp \
     beschreibungdocumentitem.cpp \
     eigenschaftendocumentitem.cpp \
-    abgleitetewertedocumentitem.cpp \
     fertigkeitdocumentitem.cpp \
     basedocumentitem.cpp \
     bogendocumentitem.cpp
@@ -56,7 +55,6 @@ HEADERS  += \
     headlinedocumentitem.h \
     beschreibungdocumentitem.h \
     eigenschaftendocumentitem.h \
-    abgleitetewertedocumentitem.h \
     fertigkeitdocumentitem.h \
     basedocumentitem.h \
     bogendocumentitem.h

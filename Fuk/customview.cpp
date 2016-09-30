@@ -3,7 +3,7 @@
 #include <QWheelEvent>
 
 CustomView::CustomView(QWidget* parent) : QGraphicsView(parent){
-
+    scale(1/2.0,1/2.0);
 }
 
 void CustomView::wheelEvent(QWheelEvent *event){

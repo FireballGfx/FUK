@@ -18,8 +18,8 @@ int main(int argc, char *argv[])
     Startlogo s;
     s.show();
 
-
-    /*Ptr<CharakterManager> charakterManagerPtr = Ptr<CharakterManager>(new CharakterManager());
+/*
+    Ptr<CharakterManager> charakterManagerPtr = Ptr<CharakterManager>(new CharakterManager());
 
     auto charakterManager = charakterManagerPtr.get();
 
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
     o.paint(charakterManagerPtr->getCurrentCharakter());
     o.show();
 
-    */
+*/
     return a.exec();
 }
 

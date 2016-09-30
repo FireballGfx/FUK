@@ -50,8 +50,8 @@ void FertigkeitDocumentItem::paint(QPainter *painter, const QStyleOptionGraphics
         QRectF fertigkeitRectSatz( xCurrentSatz,yCurrent + half,tmpWidthSatz,tmpHeightSatz);
         painter->drawText(fertigkeitRectSatz,Qt::TextWordWrap, satz);
 
-        xCurrent = xCurrent + px + tmpHeightName;
-        yCurrent = yCurrent + px + tmpWidthName;
+        //xCurrent = xCurrent + px + tmpHeightName;
+        yCurrent = yCurrent + px + tmpHeightName;
     }
 }
 
