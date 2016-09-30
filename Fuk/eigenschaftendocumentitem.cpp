@@ -45,11 +45,23 @@ void EigenschaftenDocumentItem::paint(QPainter *painter, const QStyleOptionGraph
 
     //--
 
-    int xGH = 1200;
+    // das folgende ggf. auslagern in eine eigene Klasse
+    int xGH = 221;
     int yGH = 828;
 
-    int xZA = 1528;
+    int xZA = 548;
     int yZA = 828;
+
+    int xAW = 874;
+    int yAW = 828;
+
+    int xVW = 1200;
+    int yVW = 828;
+
+    int xFW = 1528;
+    int yFW = 828;
+
+
 
     QRectF kl(xKL + half ,yKL + half,tmpWidth,tmpHeight);
     QRectF wa(xWA + half ,yWA + half,tmpWidth,tmpHeight);
@@ -63,6 +75,9 @@ void EigenschaftenDocumentItem::paint(QPainter *painter, const QStyleOptionGraph
 
     QRectF gh(xGH + half ,yGH + half,tmpWidth,tmpHeight);
     QRectF za(xZA + half ,yZA + half,tmpWidth,tmpHeight);
+    QRectF aw(xAW + half ,yAW + half,tmpWidth,tmpHeight);
+    QRectF vw(xVW + half ,yVW + half,tmpWidth,tmpHeight);
+    QRectF fw(xFW + half ,yFW + half,tmpWidth,tmpHeight);
 
     painter->drawText(kl,Qt::TextWordWrap, QString::number(charakter->getEigenschaft(Merkmal::KLUGHEIT).getWert()));
     painter->drawText(wa,Qt::TextWordWrap, QString::number(charakter->getEigenschaft(Merkmal::WAHRNEHMUNG).getWert()));
@@ -76,18 +91,10 @@ void EigenschaftenDocumentItem::paint(QPainter *painter, const QStyleOptionGraph
 
     painter->drawText(gh,Qt::TextWordWrap, QString::number(charakter->getGesundheit()));
     painter->drawText(za,Qt::TextWordWrap, QString::number(charakter->getZauberwert()));
+    painter->drawText(aw,Qt::TextWordWrap, QString::number(charakter->getAngriffsWert()));
+    painter->drawText(vw,Qt::TextWordWrap, QString::number(charakter->getVerteidigungswert()));
+    painter->drawText(fw,Qt::TextWordWrap, QString::number(charakter->getFernkampf()));
 
 
 }
-/*
 
-QFont boldFont = painter->font();
-boldFont.setBold(true);
-painter->setFont(boldFont);
-painter->drawText(boundingRect(),Qt::TextWordWrap, "Beschreibung deines Charakters");
-painter->setFont(font);
-
-QRectF beschreibung(x,y+50,width,heigth);
-
-painter->drawText(beschreibung,Qt::TextWordWrap, ch->getBeschreibung());
-*/

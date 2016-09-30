@@ -8,9 +8,6 @@
 
 class EigenschaftenDocumentItem : public BeschreibungDocumentItem
 {
-//protected:
-//    Ptr<Charakter> charakter;
-
 public:
     EigenschaftenDocumentItem(int x, int y, int width, int heigth,
                               Ptr<Charakter> charakter);

@@ -24,7 +24,7 @@ public:
 
     QString getName() const;
     QString getSatz() const;
-    Merkmal getMerkmal();
+    Merkmal getMerkmal() const;
 
     void setName(const QString name);
     void setSatz(const QString satz);

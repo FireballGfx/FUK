@@ -24,7 +24,7 @@ void Fertigkeit::setSatz(const QString satz){
     this->satz = satz;
 }
 
-Merkmal Fertigkeit::getMerkmal(){
+Merkmal Fertigkeit::getMerkmal() const{
     return merkmal;
 }
 

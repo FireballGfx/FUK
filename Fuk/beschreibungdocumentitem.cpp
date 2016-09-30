@@ -14,18 +14,18 @@ void BeschreibungDocumentItem::paint(QPainter *painter, const QStyleOptionGraphi
     int width = rect.width();
     int heigth = rect.height();
 
-    painter->setFont(QFont("times",32));
+    painter->setFont(QFont("times",30));
 
-    QFont font = painter->font();
+    //QFont font = painter->font();
 
 
-    QFont boldFont = painter->font();
-    boldFont.setBold(true);
-    painter->setFont(boldFont);
-    painter->drawText(boundingRect(),Qt::TextWordWrap, "Beschreibung deines Charakters");
-    painter->setFont(font);
+    //QFont boldFont = painter->font();
+    //boldFont.setBold(true);
+    //painter->setFont(boldFont);
+    //painter->drawText(boundingRect(),Qt::TextWordWrap, "Beschreibung deines Charakters");
+    //painter->setFont(font);
 
-    QRectF beschreibung(x,y+50,width,heigth);
+    QRectF beschreibung(x,y,width,heigth);
 
     painter->drawText(beschreibung,Qt::TextWordWrap, ch->getBeschreibung());
 

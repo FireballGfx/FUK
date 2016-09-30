@@ -5,7 +5,7 @@
 #include "beschreibungdocumentitem.h"
 #include "headlinedocumentitem.h"
 #include "eigenschaftendocumentitem.h"
-
+#include "fertigkeitdocumentitem.h"
 
 #include <QMessageBox>
 #include <QGraphicsEllipseItem>
@@ -32,26 +32,21 @@ Overview::Overview(QWidget *parent,Ptr<CharakterManager> charakterManager) :
 
     connect(ui->verwerfenButton,SIGNAL(clicked()),this,SLOT(verwerfen()));
     connect(ui->druckenButton,SIGNAL(clicked()),this,SLOT(drucken()));
-
 }
 
 
 void Overview::paint(Ptr<Charakter> charakter){
-
     BogenDocumentItem* bogen = new BogenDocumentItem(0,0,1748,2480);
-
     HeadLineDocumentItem* headline = new HeadLineDocumentItem(112,281,869,107, tr("Charakterdokument - ") + Constants::version,charakter);
-
-    BeschreibungDocumentItem* beschreibungDocumentItem = new BeschreibungDocumentItem(112,499,868,436,charakter);
-
+    BeschreibungDocumentItem* beschreibungDocumentItem = new BeschreibungDocumentItem(112,499,869,217,charakter);
     EigenschaftenDocumentItem* eigenschaftenDocumentItem = new EigenschaftenDocumentItem(1090,281,554,645,charakter);
+    FertigkeitDocumentItem* fertigkeitDocumentItem = new FertigkeitDocumentItem(112,1046,1523,1311,charakter);
 
     scene->addItem(bogen);
     scene->addItem(headline);
     scene->addItem(beschreibungDocumentItem);
     scene->addItem(eigenschaftenDocumentItem);
-
-
+    scene->addItem(fertigkeitDocumentItem);
 }
 
 
