@@ -34,7 +34,12 @@ void FertigkeitDocumentItem::paint(QPainter *painter, const QStyleOptionGraphics
 
         Fertigkeit fertigkeit = it.next();
         QString strMerkmal = MerkmalNamen[fertigkeit.getMerkmal()];
-        strMerkmal = strMerkmal.mid(0,2);
+
+        if(fertigkeit.getMerkmal() == WILLENSKRAFT){
+            strMerkmal = "WK";
+        }else{
+            strMerkmal = strMerkmal.mid(0,2);
+        }
         QString satz = fertigkeit.getSatz();
         QString name = fertigkeit.getName();
 

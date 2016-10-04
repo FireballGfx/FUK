@@ -1,13 +1,14 @@
 #include <QPainter>
 #include <QMouseEvent>
 #include <QGraphicsSimpleTextItem>
+#include <QTimer>
 #include "startlogo.h"
 #include "ui_startlogo.h"
 #include "global.h"
 
 
 Startlogo::Startlogo(QWidget *parent) :
-    QWidget(parent),
+    QWidget(parent),counter(3),
     ui(new Ui::Startlogo)
 {
     ui->setupUi(this);
@@ -21,12 +22,16 @@ Startlogo::Startlogo(QWidget *parent) :
     QCoreApplication::instance()->installEventFilter(this);
 
 
+    QTimer *timer = new QTimer(this);
+
+    connect(timer,SIGNAL(timeout()),this,SLOT(tick()));
     connect(this,SIGNAL(showMainForm()),this,SLOT(startApp()));
+
+    timer->start(1000);
 }
 
 Startlogo::~Startlogo()
 {
-
     delete ui;
 }
 
@@ -35,19 +40,24 @@ void Startlogo::startApp(){
     mainForm.show();
 }
 
+void Startlogo::tick(){
+
+    if(counter > 0){
+        counter = counter - 1;
+    }
+}
+
 void Startlogo::mouseMoveEvent(QMouseEvent *event){
     if(event->type() == QEvent::MouseMove){
-        // QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
-
 
         Qt::CursorShape shape = Qt::ArrowCursor;
         QApplication::setOverrideCursor(QCursor(shape));
 
-        this->close();
 
-
-
-        emit showMainForm();
+        if(counter == 0){
+            this->close();
+            emit showMainForm();
+        }
     }
 }
 
@@ -58,6 +68,7 @@ void Startlogo::paintEvent(QPaintEvent *event){
 
     painter.begin(this);
     painter.drawPixmap(0,0,pixmap);
+
 
     painter.setPen(Qt::red);
     painter.drawText(QPoint(5,590),Constants::version);

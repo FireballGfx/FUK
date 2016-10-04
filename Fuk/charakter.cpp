@@ -65,7 +65,7 @@ bool Charakter::checkHinzufuegen(int index, Fertigkeit f){
         return true;
     }
 
-    if(eigenschaft.getWert() == 4){
+    if(eigenschaft.getWert() == 5){
         return false;
     }else{
         return true;

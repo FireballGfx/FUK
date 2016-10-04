@@ -19,7 +19,7 @@ public:
 
 public slots:
     void startApp();
-
+    void tick();
 signals:
     void showMainForm();
 
@@ -27,9 +27,10 @@ protected:
     void mouseMoveEvent(QMouseEvent* event);
     void paintEvent(QPaintEvent* event);
 
+
 private:
     Ui::Startlogo *ui;
-
+    int counter;
     MainForm mainForm;
 };
 
